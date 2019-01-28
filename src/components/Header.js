@@ -19,7 +19,7 @@ const Logo = styled.img`
 
 const NavTags = styled(NavLink)`
   font-weight: 1000;
-  font-size: 3vh;
+  font-size: 2.5vh;
   line-height: 3vh;
   margin: 4vh 4vh 0 4vh;
   color: #ffffff;
