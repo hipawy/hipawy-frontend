@@ -21,8 +21,11 @@ class Footer extends Component {
                 <Logo src={BrandLogo} alt="HiPawy" />
               </NavbarBrand>
               <p>
-                Here you can use rows and columns here to organize your footer
-                content.
+                Jl. Kemang I No.1, Bangka, Mampang Prpt.
+                <br />
+                Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12730
+                <br />
+                +6282331334446
               </p>
             </MDBCol>
             <MDBCol md="3">
@@ -35,18 +38,18 @@ class Footer extends Component {
                   <a href="#!">Q&A</a>
                 </li>
               </ul>
-                    </MDBCol>
-                    <MDBCol md="3">
-                        <h5 className="title">Legal</h5>
-                        <ul>
-                            <li className="list-unstyled">
-                                <a href="#!">Privacy Policy</a>
-                            </li>
-                            <li className="list-unstyled">
-                                <a href="#!">Term</a>
-                            </li>
-                        </ul>
-                    </MDBCol>
+            </MDBCol>
+            <MDBCol md="3">
+              <h5 className="title">Legal</h5>
+              <ul>
+                <li className="list-unstyled">
+                  <a href="#!">Privacy Policy</a>
+                </li>
+                <li className="list-unstyled">
+                  <a href="#!">Term</a>
+                </li>
+              </ul>
+            </MDBCol>
           </MDBRow>
         </MDBContainer>
         <div className="footer-copyright text-center py-3">
