@@ -71,7 +71,7 @@ class Header extends Component {
             </Nav>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavTags href="/components/">Register/Login</NavTags>
+                <NavTags href="/components/">Signup/Signin</NavTags>
               </NavItem>
             </Nav>
           </Collapse>

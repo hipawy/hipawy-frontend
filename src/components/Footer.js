@@ -1,22 +1,50 @@
 import React, { Component } from "react";
 import BrandLogo from "../assets/Logo.png";
 import styled from "styled-components";
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
-import { NavbarBrand } from "reactstrap";
+import {
+  NavbarBrand,
+  Nav,
+  Row,
+  Col,
+  Container,
+  CardFooter,
+  NavLink
+} from "reactstrap";
 
 const Logo = styled.img`
   height: 8vh;
   width: auto;
 `;
 
+const NavTags = styled(NavLink)`
+  font-weight: 1000;
+  font-size: 2vh;
+  line-height: 3vh;
+  color: #ffffff;
+
+  :hover {
+    color: #ffcc12;
+  }
+`;
+
+const FooterCard = styled(CardFooter)`
+  background-color: #933594;
+  color: white;
+`;
+
+const FootNav = styled(Nav)`
+  background-color: #790379;
+  color: white;
+`;
+
 class Footer extends Component {
   state = {};
   render() {
     return (
-      <MDBFooter color="purple" className="font-small pt-4 mt-4">
-        <MDBContainer fluid className="text-center text-md-left">
-          <MDBRow>
-            <MDBCol md="6">
+      <FooterCard className="font-small pt-4 mt-4">
+        <Container fluid className="text-center text-md-left">
+          <Row>
+            <Col md="6">
               <NavbarBrand href="/">
                 <Logo src={BrandLogo} alt="HiPawy" />
               </NavbarBrand>
@@ -27,37 +55,37 @@ class Footer extends Component {
                 <br />
                 +6282331334446
               </p>
-            </MDBCol>
-            <MDBCol md="3">
+            </Col>
+            <Col md="3">
               <h5 className="title">Company</h5>
               <ul>
                 <li className="list-unstyled">
-                  <a href="#!">About Us</a>
+                  <NavTags href="/About/">About Us</NavTags>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">Q&A</a>
+                  <NavTags href="/Q&A/">Q&A</NavTags>
                 </li>
               </ul>
-            </MDBCol>
-            <MDBCol md="3">
+            </Col>
+            <Col md="3">
               <h5 className="title">Legal</h5>
               <ul>
                 <li className="list-unstyled">
-                  <a href="#!">Privacy Policy</a>
+                  <NavTags href="/Privacy-Policy/">Privacy Policy</NavTags>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">Term</a>
+                  <NavTags href="/Term/">Term</NavTags>
                 </li>
               </ul>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-        <div className="footer-copyright text-center py-3">
-          <MDBContainer fluid>
+            </Col>
+          </Row>
+        </Container>
+        <FootNav className="footer-copyright text-center py-3">
+          <Container fluid>
             &copy; {new Date().getFullYear()} Copyright: HiPawy!
-          </MDBContainer>
-        </div>
-      </MDBFooter>
+          </Container>
+        </FootNav>
+      </FooterCard>
     );
   }
 }
