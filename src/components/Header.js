@@ -2,12 +2,27 @@ import React, { Component } from "react";
 import BrandLogo from "../assets/Logo.png";
 import styled from "styled-components";
 //import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Modal } from "reactstrap";
-import LoginRegister from "../components/LoginRegister";
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Modal,
+  Button,
+  ModalHeader,
+  Card,
+  CardTitle,
+  CardBody,
+  ModalBody,
+  Collapse
+} from "reactstrap";
+import Login from "../components/LoginRegister/Login";
+import Register from "../components/LoginRegister/Register";
 
 const Logo = styled.img`
   height: 5vh;
-  width: auto;
+  // width: auto;
   margin-right: 10px;
 `;
 
@@ -22,29 +37,57 @@ const NavTags = styled(NavLink)`
 `;
 
 const NavBar = styled(Navbar)`
+  display: flex;
+  justify-content: center;
   background-color: #933594;
   color: white;
   width: 100vw;
 `;
 
-const CustomModal = styled(Modal)`
-  margin: 5em !important;
-  max-width: 100%;
+const ModalButton = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const Loginfont = styled(CardTitle)`
+  font-weight: 1200;
+  font-size: 9vh;
 `;
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
+      collapseA: true,
+      collapseB: false
     };
 
     this.toggle = this.toggle.bind(this);
+    this.toggleNestedA = this.toggleNestedA.bind(this);
+    this.toggleNestedB = this.toggleNestedB.bind(this);
   }
 
   toggle() {
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
+      collapseA: true,
+      collapseB: false
+    });
+  }
+
+  toggleNestedA() {
+    this.setState({
+      collapseA: !this.state.collapseA,
+      collapseB: false
+    });
+  }
+
+  toggleNestedB() {
+    this.setState({
+      collapseA: false,
+      collapseB: !this.state.collapseB
     });
   }
   render() {
@@ -77,9 +120,28 @@ class Header extends Component {
             </Nav>
           </div>
         </NavBar>
-        <CustomModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
-          <LoginRegister />
-        </CustomModal>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} size="sm">
+          <ModalButton>
+            <Button onClick={this.toggleNestedA}>Login</Button>
+            <Button onClick={this.toggleNestedB}>Register</Button>
+          </ModalButton>
+          <Collapse isOpen={this.state.collapseA}>
+            <Card>
+              <CardBody>
+                <Loginfont>Sign In</Loginfont>
+                <Login />
+              </CardBody>
+            </Card>
+          </Collapse>
+          <Collapse isOpen={this.state.collapseB}>
+            <Card>
+              <CardBody>
+                <Loginfont>Register</Loginfont>
+                <Register />
+              </CardBody>
+            </Card>
+          </Collapse>
+        </Modal>
       </div>
     );
   }
