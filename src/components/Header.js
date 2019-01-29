@@ -63,7 +63,6 @@ class Header extends Component {
       collapseA: true,
       collapseB: false
     };
-
     this.toggle = this.toggle.bind(this);
     this.toggleNestedA = this.toggleNestedA.bind(this);
     this.toggleNestedB = this.toggleNestedB.bind(this);
