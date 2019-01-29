@@ -57,10 +57,10 @@ class Header extends Component {
             </NavbarBrand>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavTags href="/about/">About</NavTags>
+                <NavTags href="/About/">About</NavTags>
               </NavItem>
               <NavItem>
-                <NavTags href="/petCare/">Pet Care</NavTags>
+                <NavTags href="/PetCare/">Pet Care</NavTags>
               </NavItem>
               <NavItem>
                 <NavTags href="/Q&A/">Q&A</NavTags>
