@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, CardTitle, CardGroup, CardBody } from "reactstrap";
+import { Card, CardTitle, CardGroup, CardBody, Button } from "reactstrap";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -11,6 +11,7 @@ const Loginfont = styled(CardTitle)`
 
 const Cards = styled(CardGroup)`
   display: flex;
+  // flex-direction: column;
   text-align: center;
   height: 50%;
 `;
@@ -19,20 +20,12 @@ const LoginRegister = props => {
   return (
     <Cards>
       <Card>
-        {/* <CardImg
-          src="https://www.cutepet.co.za/wp-content/uploads/2018/03/Cute-Pet-Header-Login.png"
-          alt="Login Image"
-        /> */}
         <CardBody>
           <Loginfont>Sign In</Loginfont>
           <Login />
         </CardBody>
       </Card>
       <Card>
-        {/* <CardImg
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdc5rtCrc4q5-sF-NBXX4PA23_Q0UAfi_Y46Pw1DVTx-pOzDIx"
-          alt="Card image cap"
-        /> */}
         <CardBody>
           <Loginfont>Register</Loginfont>
           <Register />
