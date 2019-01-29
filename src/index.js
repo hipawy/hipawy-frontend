@@ -7,13 +7,13 @@ import ReactDOM from "react-dom";
 //  import store from "./store";
 import Home from "./views/Home";
 import * as serviceWorker from "./serviceWorker";
-import './index.css'
+import "./index.css";
 
 ReactDOM.render(
   // <Provider store={store}>
-    <Home />
+  <Home />,
   //</Provider>,
-  ,document.getElementById("root")
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change

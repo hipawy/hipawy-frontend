@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Jumbotron, Container, Button } from "reactstrap";
+// import Footer from "../components/Footer":
 
 import PetAdopt from "../assets/pet-adopt.jpg";
 
@@ -14,15 +15,22 @@ const JumboStyle = styled(Jumbotron)`
   padding-top: center;
   display: flex;
   text-align: center;
-  font-weight: 2000
+  width: 100vw;
+  margin-bottom: 0rem;
 `;
 
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`;
 
 class Home extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <Body>
         <Header />
         <div>
           <JumboStyle fluid>
@@ -36,7 +44,7 @@ class Home extends Component {
           </JumboStyle>
         </div>
         <Footer />
-      </div>
+      </Body>
     );
   }
 }

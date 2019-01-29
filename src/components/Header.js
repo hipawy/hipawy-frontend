@@ -2,15 +2,8 @@ import React, { Component } from "react";
 import BrandLogo from "../assets/Logo.png";
 import styled from "styled-components";
 //import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Modal } from "reactstrap";
+import LoginRegister from "../components/LoginRegister";
 
 const Logo = styled.img`
   height: 5vh;
@@ -31,23 +24,29 @@ const NavTags = styled(NavLink)`
 const NavBar = styled(Navbar)`
   background-color: #933594;
   color: white;
+  width: 100vw;
+`;
+
+const CustomModal = styled(Modal)`
+  margin: 5em !important;
+  max-width: 100%;
 `;
 
 class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      modal: false
+    };
 
     this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
   }
 
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
   render() {
     return (
       <div>
@@ -56,30 +55,31 @@ class Header extends Component {
             <NavbarBrand href="/">
               <Logo src={BrandLogo} alt="HiPawy" />
             </NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="mr-auto" navbar>
-                <NavItem>
-                  <NavTags href="/about/">About</NavTags>
-                </NavItem>
-                <NavItem>
-                  <NavTags href="/petCare/">Pet Care</NavTags>
-                </NavItem>
-                <NavItem>
-                  <NavTags href="/Q&A/">Q&A</NavTags>
-                </NavItem>
-              </Nav>
-              <Nav>
-                <NavItem>
-                  <NavTags href="/joinus/">
-                    <i className="fa fa-user" />
-                    <span style={{ marginLeft: "10px" }}>Join Us</span>
-                  </NavTags>
-                </NavItem>
-              </Nav>
-            </Collapse>
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <NavTags href="/about/">About</NavTags>
+              </NavItem>
+              <NavItem>
+                <NavTags href="/petCare/">Pet Care</NavTags>
+              </NavItem>
+              <NavItem>
+                <NavTags href="/Q&A/">Q&A</NavTags>
+              </NavItem>
+            </Nav>
+
+            <Nav>
+              <NavItem>
+                <NavTags onClick={this.toggle}>
+                  <i className="fa fa-user" />
+                  <span style={{ marginLeft: "10px" }}>Join Us</span>
+                </NavTags>
+              </NavItem>
+            </Nav>
           </div>
         </NavBar>
+        <CustomModal isOpen={this.state.modal} toggle={this.toggle} size="lg">
+          <LoginRegister />
+        </CustomModal>
       </div>
     );
   }
