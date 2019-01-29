@@ -11,6 +11,7 @@ import {
   NavItem,
   NavLink
 } from "reactstrap";
+// import LoginRegister from "../components/LoginRegister";
 
 const Logo = styled.img`
   height: 8vh;
@@ -32,9 +33,19 @@ const NavTags = styled(NavLink)`
 const NavBar = styled(Navbar)`
   background-color: #933594;
   color: white;
+  width: 100vw;
 `;
 
 class Header extends Component {
+  // state = {
+  //   loginPressed: false
+  // };
+
+  // handlePress = e => {
+  //   this.setState({ [e.target.name]: true });
+  //   console.log(this.state);
+  // };
+
   constructor(props) {
     super(props);
 
@@ -71,7 +82,9 @@ class Header extends Component {
             </Nav>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavTags href="/components/">Signup/Signin</NavTags>
+                <NavTags onClick={this.handlePress} name="loginPressed">
+                  Signup/Signin
+                </NavTags>
               </NavItem>
             </Nav>
           </Collapse>
