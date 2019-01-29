@@ -19,7 +19,7 @@ const Logo = styled.img`
 
 const NavTags = styled(NavLink)`
   font-weight: 1000;
-  font-size: 3vh;
+  font-size: 2.5vh;
   line-height: 3vh;
   margin: 4vh 4vh 0 4vh;
   color: #ffffff;
@@ -60,17 +60,18 @@ class Header extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavTags href="/About/">
-                  About
-                </NavTags>
+                <NavTags href="/About/">About</NavTags>
               </NavItem>
               <NavItem>
                 <NavTags href="/PetCare/"> Pet Care</NavTags>
               </NavItem>
+              <NavItem>
+                <NavTags href="/Q&A/">Q&A</NavTags>
+              </NavItem>
             </Nav>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavTags href="/components/">Register/Login</NavTags>
+                <NavTags href="/components/">Signup/Signin</NavTags>
               </NavItem>
             </Nav>
           </Collapse>
