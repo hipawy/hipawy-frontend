@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import BrandLogo from "../assets/Logo.png";
 import styled from "styled-components";
+import classnames from "classnames";
 //import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Navbar,
@@ -10,12 +11,12 @@ import {
   NavLink,
   Modal,
   Button,
-  ModalHeader,
   Card,
   CardTitle,
   CardBody,
-  ModalBody,
-  Collapse
+  Collapse,
+  Row,
+  Col
 } from "reactstrap";
 import Login from "../components/LoginRegister/Login";
 import Register from "../components/LoginRegister/Register";
@@ -58,38 +59,22 @@ const Loginfont = styled(CardTitle)`
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      modal: false,
-      collapseA: true,
-      collapseB: false
-    };
+    this.state = { modal: false, activeTab: "1" };
 
     this.toggle = this.toggle.bind(this);
-    this.toggleNestedA = this.toggleNestedA.bind(this);
-    this.toggleNestedB = this.toggleNestedB.bind(this);
   }
 
   toggle() {
     this.setState({
-      modal: !this.state.modal,
-      collapseA: true,
-      collapseB: false
+      modal: !this.state.modal
     });
   }
 
-  toggleNestedA() {
-    this.setState({
-      collapseA: !this.state.collapseA,
-      collapseB: false
-    });
-  }
-
-  toggleNestedB() {
-    this.setState({
-      collapseA: false,
-      collapseB: !this.state.collapseB
-    });
-  }
+  toggleTab = param => {
+    if (this.state.activeTab !== param) {
+      this.setState({ activeTab: param });
+    }
+  };
   render() {
     return (
       <div>
@@ -120,12 +105,40 @@ class Header extends Component {
             </Nav>
           </div>
         </NavBar>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} size="sm">
-          <ModalButton>
-            <Button onClick={this.toggleNestedA}>Login</Button>
-            <Button onClick={this.toggleNestedB}>Register</Button>
-          </ModalButton>
-          <Collapse isOpen={this.state.collapseA}>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} size="md">
+          <Row noGutters="true">
+            <Col sm="6">
+              <Button
+                block
+                style={{ borderRadius: 0 }}
+                className={classnames({
+                  active: this.state.activeTab == "1"
+                })}
+                onClick={() => {
+                  this.toggleTab("1");
+                }}
+              >
+                Login
+              </Button>
+            </Col>
+
+            <Col sm="6">
+              <Button
+                block
+                style={{ borderRadius: 0 }}
+                className={classnames({
+                  active: this.state.activeTab == "2"
+                })}
+                onClick={() => {
+                  this.toggleTab("2");
+                }}
+              >
+                Register
+              </Button>
+            </Col>
+          </Row>
+
+          <Collapse isOpen={this.state.activeTab === "1"}>
             <Card>
               <CardBody>
                 <Loginfont>Sign In</Loginfont>
@@ -133,7 +146,7 @@ class Header extends Component {
               </CardBody>
             </Card>
           </Collapse>
-          <Collapse isOpen={this.state.collapseB}>
+          <Collapse isOpen={this.state.activeTab === "2"}>
             <Card>
               <CardBody>
                 <Loginfont>Register</Loginfont>
