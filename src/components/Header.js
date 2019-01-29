@@ -13,16 +13,15 @@ import {
 } from "reactstrap";
 
 const Logo = styled.img`
-  height: 8vh;
+  height: 5vh;
   width: auto;
+  margin-right: 10px;
 `;
 
 const NavTags = styled(NavLink)`
   font-weight: 1000;
-  font-size: 2.5vh;
-  line-height: 3vh;
-  margin: 4vh 4vh 0 4vh;
   color: #ffffff;
+  margin: 5px;
 
   :hover {
     color: #ffcc12;
@@ -53,28 +52,33 @@ class Header extends Component {
     return (
       <div>
         <NavBar expand="md">
-          <NavbarBrand href="/">
-            <Logo src={BrandLogo} alt="HiPawy" />
-          </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavTags href="/About/">About</NavTags>
-              </NavItem>
-              <NavItem>
-                <NavTags href="/PetCare/"> Pet Care</NavTags>
-              </NavItem>
-              <NavItem>
-                <NavTags href="/Q&A/">Q&A</NavTags>
-              </NavItem>
-            </Nav>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavTags href="/components/">Signup/Signin</NavTags>
-              </NavItem>
-            </Nav>
-          </Collapse>
+          <div className="container">
+            <NavbarBrand href="/">
+              <Logo src={BrandLogo} alt="HiPawy" />
+            </NavbarBrand>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="mr-auto" navbar>
+                <NavItem>
+                  <NavTags href="/about/">About</NavTags>
+                </NavItem>
+                <NavItem>
+                  <NavTags href="/petCare/">Pet Care</NavTags>
+                </NavItem>
+                <NavItem>
+                  <NavTags href="/Q&A/">Q&A</NavTags>
+                </NavItem>
+              </Nav>
+              <Nav>
+                <NavItem>
+                  <NavTags href="/joinus/">
+                    <i className="fa fa-user" />
+                    <span style={{ marginLeft: "10px" }}>Join Us</span>
+                  </NavTags>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </div>
         </NavBar>
       </div>
     );

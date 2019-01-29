@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
+import "font-awesome/css/font-awesome.min.css";
 import React from "react";
 import ReactDOM from "react-dom";
 //  import { Provider } from "react-redux";
