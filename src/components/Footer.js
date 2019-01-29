@@ -52,12 +52,12 @@ class Footer extends Component {
                 <h5 className="title">Company</h5>
                 <ul style={styles.ulStyles}>
                   <li className="list-unstyled">
-                    <a style={styles.anchor} href="#!">
+                    <a style={styles.anchor} href="/About/">
                       About Us
                     </a>
                   </li>
                   <li className="list-unstyled">
-                    <a style={styles.anchor} href="#!">
+                    <a style={styles.anchor} href="/Q&A/">
                       Q&A
                     </a>
                   </li>
@@ -68,12 +68,12 @@ class Footer extends Component {
                 <h5 className="title">Legal</h5>
                 <ul style={styles.ulStyles}>
                   <li className="list-unstyled">
-                    <a style={styles.anchor} href="#!">
+                    <a style={styles.anchor} href="/PrivacyPolicy/">
                       Privacy Policy
                     </a>
                   </li>
                   <li className="list-unstyled">
-                    <a style={styles.anchor} href="#!">
+                    <a style={styles.anchor} href="/Term/">
                       Term
                     </a>
                   </li>
