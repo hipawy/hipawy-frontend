@@ -15,8 +15,8 @@ const FooterCard = styled(CardFooter)`
 
 const styles = {
   anchor: {
-        color: "white"
-    },
+    color: "white"
+  },
   divBackground: {
     backgroundColor: "#740474",
     color: "white"
