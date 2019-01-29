@@ -45,12 +45,6 @@ const NavBar = styled(Navbar)`
   width: 100vw;
 `;
 
-const ModalButton = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-`;
-
 const Loginfont = styled(CardTitle)`
   font-weight: 1200;
   font-size: 9vh;
