@@ -53,16 +53,8 @@ const Loginfont = styled(CardTitle)`
 class Header extends Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
-    this.state = {
-      modal: false,
-      collapseA: true,
-      collapseB: false
-    };
-=======
     this.state = { modal: false, activeTab: "1" };
 
->>>>>>> 6beed4a534539a43ae29aa1218b16a476d826437
     this.toggle = this.toggle.bind(this);
   }
 
