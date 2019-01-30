@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import BrandLogo from "../assets/Logo.png";
 import styled from "styled-components";
 import classnames from "classnames";
-//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {
   Navbar,
   NavbarBrand,
@@ -106,7 +105,7 @@ class Header extends Component {
                 block
                 style={{ borderRadius: 0 }}
                 className={classnames({
-                  active: this.state.activeTab == "1"
+                  active: this.state.activeTab === "1"
                 })}
                 onClick={() => {
                   this.toggleTab("1");
@@ -121,7 +120,7 @@ class Header extends Component {
                 block
                 style={{ borderRadius: 0 }}
                 className={classnames({
-                  active: this.state.activeTab == "2"
+                  active: this.state.activeTab === "2"
                 })}
                 onClick={() => {
                   this.toggleTab("2");
