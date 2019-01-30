@@ -1,9 +1,9 @@
-import { FETCH_USERS } from '../types'
-import Axios from 'axios'
-import Cookies from 'js-cookie'
+import { FETCH_USERS } from "../types";
+import Axios from "axios";
+import Cookies from "js-cookie";
 
 export const fetchUsers = () => dispatch => {
-    const token = Cookies.get('token')
+  const token = Cookies.get("token");
 
     Axios.get(`${process.env.REACT_APP_API_URL}/users`, {
       headers: { Authorization: `Bearer ${token}` }

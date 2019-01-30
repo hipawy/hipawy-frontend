@@ -1,6 +1,6 @@
-import { SET_SIGN_UP_STATUS, SIGN_IN, SIGN_OUT } from '../types'
-import Axios from 'axios'
-import Cookies from 'js-cookie'
+import { SET_SIGN_UP_STATUS, SIGN_IN, SIGN_OUT } from "../types";
+import Axios from "axios";
+import Cookies from "js-cookie";
 
 export const signUp = data => dispatch => {
     Axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, data)
@@ -16,9 +16,9 @@ export const signUp = data => dispatch => {
 }
 
 export const setSignUpStatus = value => ({
-    type: SET_SIGN_UP_STATUS,
-    payload: value
-})
+  type: SET_SIGN_UP_STATUS,
+  payload: value
+});
 
 export const signIn = data => dispatch => {
     Axios.post(`${process.env.REACT_APP_API_URL}/auth/signin`, data)
@@ -34,9 +34,9 @@ export const signIn = data => dispatch => {
 }
 
 export const signOut = () => dispatch => {
-    Cookies.remove('token')
+  Cookies.remove("token");
 
-    dispatch({
-        type: SIGN_OUT
-    })
-}
+  dispatch({
+    type: SIGN_OUT
+  });
+};
