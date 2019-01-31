@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Footer from "../components/Footer";
 import { Jumbotron, Container, Button } from "reactstrap";
 //import { BrowserRouter as Router, Route, Link } from "react-router-dom";
