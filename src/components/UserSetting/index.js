@@ -5,7 +5,7 @@ import UserUpdate from "./UserUpdate";
 
 const Title = styled(CardTitle)`
   font-weight: 1200;
-  font-size: 9vh;
+  font-size: 7vh;
 `;
 
 const Cards = styled(CardGroup)`
@@ -15,17 +15,17 @@ const Cards = styled(CardGroup)`
   height: 50%;
 `;
 
-const LoginRegister = props => {
-    return (
-        <Cards>
-            <Card>
-                <CardBody>
-                    <Title>Update Profile</Title>
-                    <UserUpdate />
-                </CardBody>
-            </Card>
-        </Cards>
-    );
+const UserSetting = props => {
+  return (
+    <Cards>
+      <Card>
+        <CardBody>
+          <Title>Update Profile</Title>
+          <UserUpdate />
+        </CardBody>
+      </Card>
+    </Cards>
+  );
 };
 
-export default LoginRegister;
+export default UserSetting;
