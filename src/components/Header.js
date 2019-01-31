@@ -52,7 +52,7 @@ const Loginfont = styled(CardTitle)`
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { modal: false, activeTab: "1" };
+    this.state = { modal: false, activeTab: "1", login: true };
 
     this.toggle = this.toggle.bind(this);
   }
@@ -69,6 +69,24 @@ class Header extends Component {
     }
   };
   render() {
+    let icon_login;
+
+    if (this.state.login === true) {
+      icon_login = (
+        <div>
+          <i className="fa fa-user" />
+          <span style={{ marginLeft: "10px" }}>Join Us</span>
+        </div>
+      );
+    } else {
+      icon_login = (
+        <div>
+          <i className="fas fa-user-edit" />
+          <span style={{ marginLeft: "10px" }}>Login</span>
+        </div>
+      );
+    }
+
     return (
       <div>
         <NavBar expand="md">
@@ -90,10 +108,7 @@ class Header extends Component {
 
             <Nav>
               <NavItem>
-                <NavTags onClick={this.toggle}>
-                  <i className="fa fa-user" />
-                  <span style={{ marginLeft: "10px" }}>Join Us</span>
-                </NavTags>
+                <NavTags onClick={this.toggle}>{icon_login}</NavTags>
               </NavItem>
             </Nav>
           </div>
