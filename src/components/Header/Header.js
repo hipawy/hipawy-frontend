@@ -1,0 +1,197 @@
+import React, { Component } from "react";
+import BrandLogo from "../../assets/Logo.png";
+import styled from "styled-components";
+import classnames from "classnames";
+import {
+  Navbar,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  Modal,
+  Button,
+  Card,
+  CardTitle,
+  CardBody,
+  Collapse,
+  Row,
+  Col
+} from "reactstrap";
+import Login from "../LoginRegister/Login";
+import Register from "../LoginRegister/Register";
+import UserDropDown from "./UserDropdown";
+
+const Logo = styled.img`
+  display: flex;
+  height: 7vh;
+  margin-right: 10px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0 0 10vw;
+  margin-right: none;
+  margin-right: 15px;
+`;
+
+const NavLeft = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const NavTags = styled(NavLink)`
+  font-weight: 1000;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+
+  :hover {
+    color: #ffcc12;
+  }
+`;
+
+const NavBar = styled(Navbar)`
+  display: flex;
+  justify-content: center;
+  background-color: #933594;
+  color: white;
+  width: 100vw;
+  padding: 0;
+`;
+
+const Loginfont = styled(CardTitle)`
+  font-weight: 1200;
+  font-size: 9vh;
+`;
+
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: false,
+      activeTab: "1",
+      login: true,
+      dropdownOpen: false
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
+  toggleTab = param => {
+    if (this.state.activeTab !== param) {
+      this.setState({ activeTab: param });
+    }
+  };
+  render() {
+    let icon_login;
+
+    if (this.state.login === true) {
+      icon_login = <UserDropDown />;
+    } else {
+      icon_login = (
+        <div>
+          <div>
+            <Modal isOpen={this.state.modal} toggle={this.toggle} size="md">
+              <Row noGutters="true">
+                <Col sm="6">
+                  <Button
+                    block
+                    style={{ borderRadius: 0 }}
+                    className={classnames({
+                      active: this.state.activeTab === "1"
+                    })}
+                    onClick={() => {
+                      this.toggleTab("1");
+                    }}
+                  >
+                    Login
+                  </Button>
+                </Col>
+
+                <Col sm="6">
+                  <Button
+                    block
+                    style={{ borderRadius: 0 }}
+                    className={classnames({
+                      active: this.state.activeTab === "2"
+                    })}
+                    onClick={() => {
+                      this.toggleTab("2");
+                    }}
+                  >
+                    Register
+                  </Button>
+                </Col>
+              </Row>
+
+              <Collapse isOpen={this.state.activeTab === "1"}>
+                <Card>
+                  <CardBody>
+                    <Loginfont>Sign In</Loginfont>
+                    <Login />
+                  </CardBody>
+                </Card>
+              </Collapse>
+              <Collapse isOpen={this.state.activeTab === "2"}>
+                <Card>
+                  <CardBody>
+                    <Loginfont>Register</Loginfont>
+                    <Register />
+                  </CardBody>
+                </Card>
+              </Collapse>
+            </Modal>
+          </div>
+          <div>
+            <i className="fa fa-user" />
+            <span style={{ marginLeft: "10px" }}>Join Us</span>
+            <i className="fas fa-user-edit" />
+            <span style={{ marginLeft: "10px" }}>Sign In</span>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        <NavBar expand="md">
+          <Container>
+            <NavLeft>
+              <NavbarBrand href="/">
+                <Logo src={BrandLogo} alt="HiPawy" />
+              </NavbarBrand>
+              <Nav className="mr-auto" navbar>
+                <NavItem>
+                  <NavTags href="/About/">About</NavTags>
+                </NavItem>
+                <NavItem>
+                  <NavTags href="/PetCare/">Pet Care</NavTags>
+                </NavItem>
+                <NavItem>
+                  <NavTags href="/Q&A/">Q&A</NavTags>
+                </NavItem>
+              </Nav>
+            </NavLeft>
+
+            <Nav>
+              <NavItem>
+                <NavTags onClick={this.toggle}>{icon_login}</NavTags>
+              </NavItem>
+            </Nav>
+          </Container>
+        </NavBar>
+      </div>
+    );
+  }
+}
+
+export default Header;
