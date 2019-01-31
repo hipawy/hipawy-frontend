@@ -13,7 +13,6 @@ class About extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div>
           <JumboStyle fluid>
             <Container fluid>
@@ -97,8 +96,6 @@ class About extends Component {
             </Container>
           </JumboStyle>
         </div>
-
-        <Footer />
       </div>
     );
   }

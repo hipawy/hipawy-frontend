@@ -9,8 +9,6 @@ class PetCare extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <Footer />
         <div>
           <UserUpdate />
         </div>

@@ -9,7 +9,7 @@ import styled from "styled-components";
 
 const Button = styled(DropdownToggle)`
   margin: 0;
-  padding: 20px 60px;
+  padding: auto;
 `;
 
 const DropDown = styled(Dropdown)`

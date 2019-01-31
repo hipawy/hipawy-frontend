@@ -32,7 +32,6 @@ class Home extends Component {
   render() {
     return (
       <Body>
-        <Header />
         <div>
           <JumboStyle fluid>
             <Container fluid>
@@ -44,7 +43,6 @@ class Home extends Component {
             </Container>
           </JumboStyle>
         </div>
-        <Footer />
       </Body>
     );
   }

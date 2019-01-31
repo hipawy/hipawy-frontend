@@ -17,6 +17,7 @@ import {
   Row,
   Col
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import Login from "../LoginRegister/Login";
 import Register from "../LoginRegister/Register";
 import UserDropDown from "./UserDropdown";
@@ -31,15 +32,20 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 0 0 10vw;
+  padding: 0 0 0 7vw;
   margin-right: none;
-  margin-right: 15px;
+  margin-right: none;
 `;
 
 const NavLeft = styled.div`
   display: flex;
   justify-content: space-between;
+  align-content: center;
   align-items: center;
+`;
+
+const LoginRegister = styled.div`
+  margin: 10px 20px;
 `;
 
 const NavTags = styled(NavLink)`
@@ -101,7 +107,7 @@ class Header extends Component {
         <div>
           <div>
             <Modal isOpen={this.state.modal} toggle={this.toggle} size="md">
-              <Row noGutters="true">
+              <Row noGutters={true}>
                 <Col sm="6">
                   <Button
                     block
@@ -151,12 +157,12 @@ class Header extends Component {
               </Collapse>
             </Modal>
           </div>
-          <div>
+          <LoginRegister>
             <i className="fa fa-user" />
             <span style={{ marginLeft: "10px" }}>Join Us</span>
             <i className="fas fa-user-edit" />
             <span style={{ marginLeft: "10px" }}>Sign In</span>
-          </div>
+          </LoginRegister>
         </div>
       );
     }
@@ -166,18 +172,24 @@ class Header extends Component {
         <NavBar expand="md">
           <Container>
             <NavLeft>
-              <NavbarBrand href="/">
+              <NavbarBrand tag={Link} to="/">
                 <Logo src={BrandLogo} alt="HiPawy" />
               </NavbarBrand>
               <Nav className="mr-auto" navbar>
                 <NavItem>
-                  <NavTags href="/About/">About</NavTags>
+                  <NavTags tag={Link} to="/About/">
+                    About
+                  </NavTags>
                 </NavItem>
                 <NavItem>
-                  <NavTags href="/PetCare/">Pet Care</NavTags>
+                  <NavTags tag={Link} to="/PetCare/">
+                    Pet Care
+                  </NavTags>
                 </NavItem>
                 <NavItem>
-                  <NavTags href="/Q&A/">Q&A</NavTags>
+                  <NavTags tag={Link} to="/Q&A/">
+                    Q&A
+                  </NavTags>
                 </NavItem>
               </Nav>
             </NavLeft>
