@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Jumbotron, Container } from "reactstrap";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Footer from "../components/Footer";
 
 const JumboStyle = styled(Jumbotron)`
@@ -13,7 +13,6 @@ class About extends Component {
   render() {
     return (
       <div>
-        <Header />
         <div>
           <JumboStyle fluid>
             <Container fluid>
@@ -97,8 +96,6 @@ class About extends Component {
             </Container>
           </JumboStyle>
         </div>
-
-        <Footer />
       </div>
     );
   }
