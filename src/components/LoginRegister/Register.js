@@ -11,9 +11,9 @@ class Register extends React.Component {
     data: null,
     province: "",
     city: "",
-    fullName: "",
+    fullname: "",
     address: "",
-    phoneNumber: 0,
+    phone: 0,
     email: "",
     password: "",
     termsCheck: false
@@ -42,15 +42,15 @@ class Register extends React.Component {
 
     const {
       data,
-      fullName,
+      fullname,
       address,
       province,
       city,
-      phoneNumber,
+      phone,
       email,
       password
     } = this.state;
-    const { isAuthenticated, isSignUpSuccess } = this.props;
+    // const { isAuthenticated, isSignUpSuccess } = this.props;
 
     if (this.state.termsCheck === true) {
       SubmitButton = <Button type="submit">Submit</Button>;
@@ -94,10 +94,10 @@ class Register extends React.Component {
               <Label for="fullName">Full Name</Label>
               <Input
                 type="text"
-                name="fullName"
+                name="fullname"
                 id="name"
                 placeholder="Full Name.."
-                value={fullName}
+                value={fullname}
                 onChange={this.handleChange}
               />
             </FormGroup>
@@ -107,10 +107,10 @@ class Register extends React.Component {
               <Label for="phoneNumber">Phone Number</Label>
               <Input
                 type="number"
-                name="phoneNumber"
+                name="phone"
                 id="phone"
                 placeholder="Phone Number"
-                value={phoneNumber}
+                value={phone}
                 onChange={this.handleChange}
               />
             </FormGroup>
