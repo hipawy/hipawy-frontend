@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+import { signIn } from "../../store/actions/auth";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-export default class Example extends React.Component {
+class Login extends React.Component {
   state = {
     email: "",
     password: ""
@@ -14,9 +16,7 @@ export default class Example extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { data, ...state } = this.state;
-
-    console.log(state);
+    this.props.signIn(this.state);
   };
   render() {
     return (
@@ -46,3 +46,8 @@ export default class Example extends React.Component {
     );
   }
 }
+
+export default connect(
+  null,
+  { signIn }
+)(Login);
