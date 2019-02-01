@@ -7,17 +7,21 @@ import {
 } from "reactstrap";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { signOut } from "../../store/actions/auth";
+import { Redirect } from "react-router-dom";
 
 const Button = styled(DropdownToggle)`
   margin: 0;
   padding: 3vh 12vh;
+  height: 100%;
+  font-size: 4vh;
 `;
 
 const DropDown = styled(Dropdown)`
   margin: 0;
   padding: 0;
+  transition: 1s;
+  height: 100%;
 `;
 
 class UserDropDown extends React.Component {
@@ -26,7 +30,8 @@ class UserDropDown extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      isRedirectedtoProfile: false
     };
   }
 
@@ -36,16 +41,24 @@ class UserDropDown extends React.Component {
     }));
   }
 
+  toProfile = e => {
+    this.setState({
+      isRedirectedtoProfile: true
+    });
+  };
+
   render() {
     const { signOut, user } = this.props;
+
+    if (this.state.isRedirectedtoProfile) {
+      return <Redirect to="/profile" />;
+    }
 
     return (
       <DropDown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <Button>{user && user.fullname.split(" ")[0]}</Button>
         <DropdownMenu>
-          <DropdownItem tag={Link} to="/profile">
-            Profile
-          </DropdownItem>
+          <DropdownItem onClick={this.toProfile}>Profile</DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
         </DropdownMenu>

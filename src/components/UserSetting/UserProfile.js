@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Col, Form, FormGroup, Label, Input } from "reactstrap";
 
 class UserList extends Component {
   render() {
