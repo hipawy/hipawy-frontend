@@ -13,10 +13,9 @@ const JumboStyle = styled(Jumbotron)`
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 45vw;
-  padding-top: center;
   display: flex;
   text-align: center;
-  width: 100vw;
+  width: 100%;
   margin-bottom: 0rem;
 `;
 
