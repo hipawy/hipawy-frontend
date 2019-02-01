@@ -77,7 +77,7 @@ class Header extends Component {
       modal: false,
       activeTab: "1",
       login: true,
-      dropdownOpen: false
+      dropdownOpen: true
     };
 
     this.toggle = this.toggle.bind(this);

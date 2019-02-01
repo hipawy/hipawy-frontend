@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, CardTitle, CardGroup, CardBody, Button } from "reactstrap";
+import { Card, CardTitle, CardGroup, CardBody } from "reactstrap";
 import UserUpdate from "./UserUpdate";
 
 const Title = styled(CardTitle)`
