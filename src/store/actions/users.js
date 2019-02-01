@@ -5,13 +5,14 @@ import Cookies from "js-cookie";
 export const fetchUsers = () => dispatch => {
   const token = Cookies.get("token");
 
-    Axios.get(`${process.env.REACT_APP_API_URL}/users`, {
-      headers: { Authorization: `Bearer ${token}` }
+  Axios.get(`${process.env.REACT_APP_API_URL}/users`, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(({ data: { users } }) => {
+      console.log(users);
+      dispatch({ type: FETCH_USERS, payload: users });
     })
-      .then(({ data: { users } }) => {
-        dispatch({ type: FETCH_USERS, payload: users });
-      })
-      .catch(err => {
-        console.error(err);
-      });
-}
+    .catch(err => {
+      console.error(err);
+    });
+};

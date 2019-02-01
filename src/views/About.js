@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Jumbotron, Container } from "reactstrap";
+import UserProfile from "../components/UserSetting/UserProfile";
 
 const JumboStyle = styled(Jumbotron)`
   margin-bottom: 0rem;
@@ -9,6 +10,7 @@ const JumboStyle = styled(Jumbotron)`
 class About extends Component {
   state = {};
   render() {
+    console.log(process.env);
     return (
       <div>
         <div>
@@ -94,6 +96,7 @@ class About extends Component {
             </Container>
           </JumboStyle>
         </div>
+        <UserProfile />
       </div>
     );
   }

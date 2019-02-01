@@ -76,7 +76,7 @@ class Header extends Component {
     this.state = {
       modal: false,
       activeTab: "1",
-      login: true,
+      login: false,
       dropdownOpen: true
     };
 
