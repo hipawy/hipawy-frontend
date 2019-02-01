@@ -11,7 +11,7 @@ const Logo = styled.img`
 const FooterCard = styled(CardFooter)`
   background-color: #933594;
   color: white;
-  width: 100vw;
+  width: 100%;
 `;
 
 const styles = {

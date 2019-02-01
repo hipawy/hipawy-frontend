@@ -23,18 +23,14 @@ import Register from "../LoginRegister/Register";
 import UserDropDown from "./UserDropdown";
 
 const Logo = styled.img`
-  display: flex;
   height: 7vh;
-  margin-right: 10px;
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0 0 0 7vw;
-  margin-right: none;
-  margin-right: none;
+  padding: 0 0 0 3vw;
 `;
 
 const NavLeft = styled.div`
@@ -50,6 +46,7 @@ const LoginRegister = styled.div`
 
 const NavTags = styled(NavLink)`
   font-weight: 1000;
+  font-size: 4vh;
   color: #ffffff;
   margin: 0;
   padding: 0;
@@ -64,13 +61,13 @@ const NavBar = styled(Navbar)`
   justify-content: center;
   background-color: #933594;
   color: white;
-  width: 100vw;
+  width: 100%;
   padding: 0;
 `;
 
 const Loginfont = styled(CardTitle)`
   font-weight: 1200;
-  font-size: 9vh;
+  font-size: 11vh;
 `;
 
 class Header extends Component {
@@ -160,8 +157,6 @@ class Header extends Component {
           <LoginRegister>
             <i className="fa fa-user" />
             <span style={{ marginLeft: "10px" }}>Join Us</span>
-            <i className="fas fa-user-edit" />
-            <span style={{ marginLeft: "10px" }}>Sign In</span>
           </LoginRegister>
         </div>
       );

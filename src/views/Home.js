@@ -13,10 +13,9 @@ const JumboStyle = styled(Jumbotron)`
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 45vw;
-  padding-top: center;
   display: flex;
   text-align: center;
-  width: 100vw;
+  width: 100%;
   margin-bottom: 0rem;
 `;
 
@@ -32,17 +31,15 @@ class Home extends Component {
   render() {
     return (
       <Body>
-        <div>
-          <JumboStyle fluid>
-            <Container fluid>
-              <h1>Meet your Pawy, Meet your Bestfriend!!</h1>
+        <JumboStyle fluid>
+          <Container fluid>
+            <h1>Meet your Pawy, Meet your Bestfriend!!</h1>
 
-              <Button outline color="purple">
-                Learn More
-              </Button>
-            </Container>
-          </JumboStyle>
-        </div>
+            <Button outline color="purple">
+              Learn More
+            </Button>
+          </Container>
+        </JumboStyle>
       </Body>
     );
   }
