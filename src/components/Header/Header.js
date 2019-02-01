@@ -58,6 +58,14 @@ const NavTags = styled(NavLink)`
   }
 `;
 
+const JoinUs = styled(NavItem)`
+  background-color: #610063;
+  :hover {
+    cursor: pointer;
+    color: #ffcc12;
+  }
+`;
+
 const NavBar = styled(Navbar)`
   display: flex;
   justify-content: center;
@@ -201,7 +209,7 @@ class Header extends Component {
             </NavLeft>
 
             <Nav>
-              <NavItem onClick={this.toggle}>{icon_login}</NavItem>
+              <JoinUs onClick={this.toggle}>{icon_login}</JoinUs>
             </Nav>
           </Container>
         </NavBar>

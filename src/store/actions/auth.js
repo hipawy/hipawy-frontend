@@ -2,6 +2,8 @@ import { SET_SIGN_UP_STATUS, SIGN_IN, SIGN_OUT } from "../types";
 import Axios from "axios";
 import Cookies from "js-cookie";
 
+console.log(process.env);
+
 export const signUp = data => dispatch => {
   Axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, data)
     .then(response => {

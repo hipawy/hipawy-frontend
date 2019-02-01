@@ -20,7 +20,11 @@ class App extends Component {
       if (token) {
         const response = await Axios.get(
           `${process.env.REACT_APP_API_URL}/auth/verify`,
-          { headers: { Authorization: `Bearer ${token}` } }
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
         );
 
         if (response.status !== 500) {

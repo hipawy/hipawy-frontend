@@ -51,11 +51,6 @@ class Register extends React.Component {
       email,
       password
     } = this.state;
-    const { isAuthenticated, isSignUpSuccess } = this.props;
-
-    // if (isSignUpSuccess) {
-    //   return <Redirect to="/" />;
-    // }
 
     if (this.state.termsCheck === true) {
       SubmitButton = <Button type="submit">Submit</Button>;
