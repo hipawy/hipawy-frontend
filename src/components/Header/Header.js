@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import BrandLogo from "../../assets/Logo.png";
 import styled from "styled-components";
 import classnames from "classnames";
@@ -21,6 +22,7 @@ import { Link } from "react-router-dom";
 import Login from "../LoginRegister/Login";
 import Register from "../LoginRegister/Register";
 import UserDropDown from "./UserDropdown";
+import { signUp } from "../../store/actions/auth";
 
 const Logo = styled.img`
   height: 7vh;
@@ -76,7 +78,7 @@ class Header extends Component {
     this.state = {
       modal: false,
       activeTab: "1",
-      login: false,
+      // login: false,
       dropdownOpen: true
     };
 
@@ -96,8 +98,9 @@ class Header extends Component {
   };
   render() {
     let icon_login;
+    const { isAuthenticated } = this.props;
 
-    if (this.state.login === true) {
+    if (isAuthenticated === true) {
       icon_login = <UserDropDown />;
     } else {
       icon_login = (
@@ -201,4 +204,12 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = store => ({
+  isAuthenticated: store.auth.isAuthenticated,
+  isSignUpSuccess: store.auth.isSignUpSuccess
+});
+
+export default connect(
+  mapStateToProps,
+  { signUp }
+)(Header);

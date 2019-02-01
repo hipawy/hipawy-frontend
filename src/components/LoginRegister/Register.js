@@ -1,13 +1,23 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { signUp } from "../../store/actions/auth";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 import provinces from "../Adress/data";
+import { Checkbox } from "@material-ui/core";
 
-export default class Example extends React.Component {
+class Register extends React.Component {
   state = {
     data: null,
     province: "",
-    city: ""
+    city: "",
+    fullName: "",
+    address: "",
+    phoneNumber: 0,
+    email: "",
+    password: "",
+    termsCheck: false
   };
 
   componentDidMount() {
@@ -18,15 +28,35 @@ export default class Example extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  termsCheckBox = name => event => {
+    this.setState({ [name]: event.target.checked });
+    console.log(event);
+  };
+
   handleSubmit = e => {
     e.preventDefault();
 
-    const { data, ...state } = this.state;
-
-    console.log(state);
+    this.props.signUp(this.state)
   };
   render() {
-    const { data, province, city } = this.state;
+    let SubmitButton;
+
+    const {
+      data,
+      fullName,
+      address,
+      province,
+      city,
+      phoneNumber,
+      email,
+      password
+    } = this.state;
+
+    if (this.state.termsCheck === true) {
+      SubmitButton = <Button type="submit">Submit</Button>;
+    } else {
+      SubmitButton = <wadu>I Have Agreed to the Terms and Conditions</wadu>;
+    }
 
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -39,6 +69,7 @@ export default class Example extends React.Component {
                 name="email"
                 id="registerEmail"
                 placeholder="Email"
+                value={email}
                 onChange={this.handleChange}
               />
             </FormGroup>
@@ -51,6 +82,7 @@ export default class Example extends React.Component {
                 name="password"
                 id="registerPassword"
                 placeholder="Password"
+                value={password}
                 onChange={this.handleChange}
               />
             </FormGroup>
@@ -65,6 +97,7 @@ export default class Example extends React.Component {
                 name="fullName"
                 id="name"
                 placeholder="Full Name.."
+                value={fullName}
                 onChange={this.handleChange}
               />
             </FormGroup>
@@ -77,6 +110,7 @@ export default class Example extends React.Component {
                 name="phoneNumber"
                 id="phone"
                 placeholder="Phone Number"
+                value={phoneNumber}
                 onChange={this.handleChange}
               />
             </FormGroup>
@@ -89,6 +123,7 @@ export default class Example extends React.Component {
             name="address"
             id="Address"
             placeholder="Jalan Kemang I ...."
+            value={address}
             onChange={this.handleChange}
           />
         </FormGroup>
@@ -139,19 +174,24 @@ export default class Example extends React.Component {
           </Col>
         </Row>
 
-        <FormGroup check>
-          <Input
-            type="checkbox"
-            name="termsCheck"
-            id="Check"
-            onChange={this.handleChange}
-          />
-          <Label for="Check" check>
-            I Have Agreed to the Terms and Conditions
-          </Label>
-        </FormGroup>
-        <Button type="submit">Submit</Button>
+        <Checkbox
+          name="termsCheck"
+          checked={this.state.termsCheck}
+          onChange={this.termsCheckBox("termsCheck")}
+          value="termsCheck"
+        />
+        <span>{SubmitButton}</span>
       </Form>
     );
   }
 }
+
+const mapStateToProps = store => ({
+  isAuthenticated: store.auth.isAuthenticated,
+  isSignUpSuccess: store.auth.isSignUpSuccess
+});
+
+export default connect(
+  mapStateToProps,
+  { signUp }
+)(Register);
