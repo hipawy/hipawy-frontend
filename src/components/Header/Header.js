@@ -48,7 +48,7 @@ const LoginRegister = styled.div`
 
 const NavTags = styled(NavLink)`
   font-weight: 1000;
-  font-size: 4vh;
+  font-size: 3vh;
   color: #ffffff;
   margin: 0;
   padding: 0;
