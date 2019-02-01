@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/actions/auth";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
@@ -36,7 +35,7 @@ class Register extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.signUp(this.state)
+    this.props.signUp(this.state);
   };
   render() {
     let SubmitButton;
@@ -51,6 +50,7 @@ class Register extends React.Component {
       email,
       password
     } = this.state;
+    const { isAuthenticated, isSignUpSuccess } = this.props;
 
     if (this.state.termsCheck === true) {
       SubmitButton = <Button type="submit">Submit</Button>;
