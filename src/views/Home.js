@@ -29,9 +29,10 @@ const Body = styled.div`
 class Home extends Component {
   state = {};
   render() {
-    return <Fragment>
+    return (
+      <Fragment>
         <Body>
-          <div>
+          
             <JumboStyle fluid>
               <Container fluid>
                 <h1>Meet your Pawy, Meet your Bestfriend!!</h1>
@@ -41,7 +42,7 @@ class Home extends Component {
                 </Button>
               </Container>
             </JumboStyle>
-          </div>
+        
         </Body>
 
         <section className="step">
@@ -114,7 +115,8 @@ class Home extends Component {
             </div>
           </div>
         </section>
-      </Fragment>;
+      </Fragment>
+    );
   }
 }
 
