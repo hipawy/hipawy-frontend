@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import BrandLogo from "../../assets/Logo.png";
 import styled from "styled-components";
@@ -78,7 +78,6 @@ class Header extends Component {
     this.state = {
       modal: false,
       activeTab: "1",
-      // login: false,
       dropdownOpen: true
     };
 
@@ -98,7 +97,7 @@ class Header extends Component {
   };
   render() {
     let icon_login;
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, isSignUpSuccess } = this.props;
 
     if (isAuthenticated === true) {
       icon_login = <UserDropDown />;
@@ -150,8 +149,17 @@ class Header extends Component {
               <Collapse isOpen={this.state.activeTab === "2"}>
                 <Card>
                   <CardBody>
-                    <Loginfont>Register</Loginfont>
-                    <Register />
+                    {isSignUpSuccess ? (
+                      <Fragment>
+                        <Loginfont>Sign In</Loginfont>
+                        <Login id="mantap" />
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        <Loginfont>Register</Loginfont>
+                        <Register />
+                      </Fragment>
+                    )}
                   </CardBody>
                 </Card>
               </Collapse>
@@ -193,9 +201,7 @@ class Header extends Component {
             </NavLeft>
 
             <Nav>
-              <NavItem>
-                <NavTags onClick={this.toggle}>{icon_login}</NavTags>
-              </NavItem>
+              <NavItem onClick={this.toggle}>{icon_login}</NavItem>
             </Nav>
           </Container>
         </NavBar>

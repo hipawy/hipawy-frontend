@@ -1,54 +1,48 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../store/actions/users";
-// import { signOut } from "../store/actions/auth";
 import { Redirect } from "react-router-dom";
 import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 class UserList extends Component {
-  componentDidMount() {
-    this.props.fetchUsers();
-  }
-
   render() {
-    const { users, isAuthenticated, signOut } = this.props;
+    const { user, isAuthenticated } = this.props;
 
-    // if (!isAuthenticated) {
-    //   return <Redirect to="/signin" />;
-    // }
+    if (user) {
+      const { password, id, createdAt, updatedAt, ...profile } = user;
 
-    return (
-      <Fragment>
-        <Form>
-          {users &&
-            users.map((user, i) => (
+      if (!isAuthenticated) {
+        return <Redirect to="/signin" />;
+      }
+
+      return (
+        <Fragment>
+          <Form>
+            {Object.keys(profile).map((field, i) => (
               <FormGroup key={i} row>
-                <Label for="fullName" sm={2}>
-                  Full Name
-                </Label>
+                <Label sm={2}>{field === "fullname" ? "Name" : field}</Label>
                 <Col sm={10}>
                   <Input
-                    value={user.fullname}
+                    value={profile[field]}
                     type="text"
                     name="fullName"
                     id="name"
+                    readOnly={true}
                   />
                 </Col>
               </FormGroup>
             ))}
-        </Form>
-        {/* <Button onClick={signOut}>Sign Out</Button> */}
-      </Fragment>
-    );
+          </Form>
+        </Fragment>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
 const mapStateToProps = store => ({
-  //   isAuthenticated: store.auth.isAuthenticated,
-  users: store.users
+  isAuthenticated: store.auth.isAuthenticated,
+  user: store.auth.user
 });
 
-export default connect(
-  mapStateToProps,
-  { fetchUsers }
-)(UserList);
+export default connect(mapStateToProps)(UserList);

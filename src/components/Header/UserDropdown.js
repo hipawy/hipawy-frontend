@@ -6,6 +6,9 @@ import {
   DropdownItem
 } from "reactstrap";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { signOut } from "../../store/actions/auth";
 
 const Button = styled(DropdownToggle)`
   margin: 0;
@@ -17,7 +20,7 @@ const DropDown = styled(Dropdown)`
   padding: 0;
 `;
 
-export default class UserDropDown extends React.Component {
+class UserDropDown extends React.Component {
   constructor(props) {
     super(props);
 
@@ -34,15 +37,28 @@ export default class UserDropDown extends React.Component {
   }
 
   render() {
+    const { signOut, user } = this.props;
+
     return (
       <DropDown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <Button caret>Username</Button>
+        <Button>{user.fullname.split(" ")[0]}</Button>
         <DropdownMenu>
-          <DropdownItem>Profile</DropdownItem>
+          <DropdownItem tag={Link} to="/profile">
+            Profile
+          </DropdownItem>
           <DropdownItem divider />
-          <DropdownItem>Sign Out</DropdownItem>
+          <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
         </DropdownMenu>
       </DropDown>
     );
   }
 }
+
+const mapStateToProps = store => ({
+  user: store.auth.user
+});
+
+export default connect(
+  mapStateToProps,
+  { signOut }
+)(UserDropDown);

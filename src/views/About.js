@@ -17,15 +17,15 @@ class About extends Component {
           <JumboStyle fluid>
             <Container fluid>
               <h1>About HiPawy!</h1>
-              <p className="lead">
+              <div className="lead">
                 HiPawy is an online, searchable database of animals who need
                 homes. It is also a directory of nearly animal adoption
                 organizations across the Jabodetabek. Organizations maintain
                 their own home pages and available-pet databases.
-              </p>
+              </div>
 
               <h2>Our mission</h2>
-              <p>
+              <div>
                 To use Internet technology and the resources it can generate to:
                 <ol>
                   <li>
@@ -39,23 +39,23 @@ class About extends Component {
                   </li>
                   <li>Elevate the status of pets to that of family member</li>
                 </ol>
-              </p>
-              <p>
+              </div>
+              <div>
                 From the comfort of their personal computers, pet lovers can
                 search for a pet that best matches their needs. They can then
                 reference a shelter’s web page and discover what services it
                 offers. Petfinder also includes discussion forums, a pet-care
                 resource directory and a library of free pet-care articles to
                 help keep pets in their homes.
-              </p>
-              <p>Petfinder is updated DAILY.</p>
-              <p>
+              </div>
+              <div>Petfinder is updated DAILY.</div>
+              <div>
                 Organizations wishing to participate should register. A contact
                 person should be responsible for direct communications with
                 Petfinder. Only nonprofit organizations will be included (but
                 Federal 501(c)(3) status is not necessary)
-              </p>
-              <p>
+              </div>
+              <div>
                 Petfinder is made up of animal-care professionals and regular
                 people volunteering for their local animal welfare organizations
                 all working together to maintain active and accurate homeless
@@ -64,17 +64,17 @@ class About extends Component {
                 due to their tireless efforts to make a difference. If you would
                 like to help, let us know! You can find us at
                 https://www.HiPawy.com/. Email: hello@hipawy.com
-              </p>
-              <p>
+              </div>
+              <div>
                 If you have a Website and would like to help us promote shelter
                 pets as the #1 choice for a new pet, you may use our free
                 widgets and graphics to add Petfinder to your website. You may
                 also want to check out our Featured Pet Module which allows you
                 to show Petfinder pets from your community on your own home
                 page.
-              </p>
+              </div>
               <h3>Disclaimer</h3>
-              <p>
+              <div>
                 Petfinder is only a directory of homeless pets and pet adoption
                 organizations. No information in Petfinder is guaranteed.
                 Although the information on Petfinder is updated frequently, it
@@ -86,13 +86,13 @@ class About extends Component {
                 adopted through, or listed in Petfinder are the sole
                 responsibility of the adoption organizations and/or the adopting
                 party.
-              </p>
-              <p>
+              </div>
+              <div>
                 Petfinder accepts no responsiblity for any liability or for any
                 injury or damages to any person or property caused by any listed
                 animal, as well as any cause of action, claims, suits or demands
                 whatsoever that may arise as a result of such injury or damage.
-              </p>
+              </div>
             </Container>
           </JumboStyle>
         </div>
