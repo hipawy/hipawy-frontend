@@ -1,0 +1,31 @@
+.step h2 {
+  padding-top: 10px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  margin-bottom: 10px;
+}
+
+.stepper {
+  min-height: 60vh;
+  background-image: url("../assets/kitten2.png");
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position-y: -50px;
+  background-position-x: 100%;
+  padding-bottom: 20px;
+
+}
+
+.stepper .line {
+  width: 2px;
+  background-color: lightgray !important;
+}
+.stepper .lead {
+  font-size: 1.1rem;
+}
+
+.rounded-circle,
+.py-2,
+.px-3 {
+  background-color: #933594;
+}
