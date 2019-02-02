@@ -1,30 +1,42 @@
 import React from "react";
 import styled from "styled-components";
-import { Card, CardTitle, CardGroup, CardBody } from "reactstrap";
-import UserUpdate from "./UserUpdate";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button
+} from "reactstrap";
+import UserProfile from "./UserProfile";
 
-const Title = styled(CardTitle)`
+const Title = styled.h1`
   font-weight: 1200;
   font-size: 7vh;
 `;
 
-const Cards = styled(CardGroup)`
-  display: flex;
-  // flex-direction: column;
-  text-align: center;
-  height: 50%;
+const ContainerHasStyled = styled(Container)`
+  padding: 40px 0;
 `;
 
 const UserSetting = props => {
   return (
-    <Cards>
-      <Card>
-        <CardBody>
-          <Title>Update Profile</Title>
-          <UserUpdate />
-        </CardBody>
-      </Card>
-    </Cards>
+    <ContainerHasStyled>
+      <Row>
+        <Title>Your Profile</Title>
+      </Row>
+      <Row>
+        <Col xs="12" md="4">
+          <UserProfile />
+        </Col>
+        <Col xs="12" md="8">
+        </Col>
+      </Row>
+    </ContainerHasStyled>
   );
 };
 

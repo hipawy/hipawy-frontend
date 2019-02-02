@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Jumbotron, Container } from "reactstrap";
-import UserProfile from "../components/UserSetting/UserProfile";
 
 const JumboStyle = styled(Jumbotron)`
   margin-bottom: 0rem;
@@ -96,7 +95,6 @@ class About extends Component {
             </Container>
           </JumboStyle>
         </div>
-        <UserProfile />
       </div>
     );
   }

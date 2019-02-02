@@ -43,7 +43,7 @@ class UserDropDown extends React.Component {
       <DropDown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <Button>{user.fullname.split(" ")[0]}</Button>
         <DropdownMenu>
-          <DropdownItem tag={Link} to="/profile">
+          <DropdownItem tag={Link} to="/UserProfile">
             Profile
           </DropdownItem>
           <DropdownItem divider />
