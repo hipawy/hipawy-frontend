@@ -5,7 +5,8 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
-import styled from "styled-components";
+import { Link } from 'react-router-dom'
+  import styled from "styled-components";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/auth";
 import { Redirect } from "react-router-dom";
@@ -14,7 +15,7 @@ const Button = styled(DropdownToggle)`
   margin: 0;
   padding: 3vh 12vh;
   height: 100%;
-  font-size: 4vh;
+  font-size: 2.2vh;
 `;
 
 const DropDown = styled(Dropdown)`
@@ -58,7 +59,9 @@ class UserDropDown extends React.Component {
       <DropDown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <Button>{user && user.fullname.split(" ")[0]}</Button>
         <DropdownMenu>
-          <DropdownItem onClick={this.toProfile}>Profile</DropdownItem>
+          <DropdownItem tag={Link} to="/UserProfile">
+            Profile
+          </DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
         </DropdownMenu>
