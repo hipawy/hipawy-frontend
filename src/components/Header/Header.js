@@ -93,15 +93,13 @@ class Header extends Component {
       activeTab: "1",
       dropdownOpen: true
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
-  }
+  };
 
   toggleTab = param => {
     if (this.state.activeTab !== param) {
@@ -111,85 +109,6 @@ class Header extends Component {
   render() {
     let icon_login;
     const { isAuthenticated, isSignUpSuccess } = this.props;
-
-    // if (isAuthenticated === true) {
-    //   icon_login = (
-    //     <Fragment>
-    //       <PetDropdown />
-    //       <UserDropDown />
-    //     </Fragment>
-    //   );
-    // } else {
-    //   icon_login = (
-    //     <Fragment>
-    //       <div>
-    //         <Modal isOpen={this.state.modal} toggle={this.toggle} size="md">
-    //           <Row noGutters={true}>
-    //             <Col sm="6">
-    //               <Button
-    //                 block
-    //                 style={{ borderRadius: 0 }}
-    //                 className={classnames({
-    //                   active: this.state.activeTab === "1"
-    //                 })}
-    //                 onClick={() => {
-    //                   this.toggleTab("1");
-    //                 }}
-    //               >
-    //                 Login
-    //               </Button>
-    //             </Col>
-
-    //             <Col sm="6">
-    //               <Button
-    //                 block
-    //                 style={{ borderRadius: 0 }}
-    //                 className={classnames({
-    //                   active: this.state.activeTab === "2"
-    //                 })}
-    //                 onClick={() => {
-    //                   this.toggleTab("2");
-    //                 }}
-    //               >
-    //                 Register
-    //               </Button>
-    //             </Col>
-    //           </Row>
-
-    //           <Collapse isOpen={this.state.activeTab === "1"}>
-    //             <Card>
-    //               <CardBody>
-    //                 <Loginfont>Sign In</Loginfont>
-    //                 <Login />
-    //               </CardBody>
-    //             </Card>
-    //           </Collapse>
-    //           <Collapse isOpen={this.state.activeTab === "2"}>
-    //             <Card>
-    //               <CardBody>
-    //                 {isSignUpSuccess ? (
-    //                   <Fragment>
-    //                     <Loginfont>Sign In</Loginfont>
-    //                     <Login id="mantap" />
-    //                   </Fragment>
-    //                 ) : (
-    //                   <Fragment>
-    //                     <Loginfont>Register</Loginfont>
-    //                     <Register />
-    //                   </Fragment>
-    //                 )}
-    //               </CardBody>
-    //             </Card>
-    //           </Collapse>
-    //         </Modal>
-    //       </div>
-    //       <LoginRegister>
-    //         <i className="fa fa-user" />
-    //         <span style={{ marginLeft: "10px" }}>Join Us</span>
-    //       </LoginRegister>
-    //     </Fragment>
-    //   );
-    // }
 
     return (
       <div>
