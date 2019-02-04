@@ -3,14 +3,7 @@ import styled from "styled-components";
 import {
   Container,
   Row,
-  Col,
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
+  Col
 } from "reactstrap";
 import UserProfile from "./UserProfile";
 
