@@ -1,4 +1,15 @@
 module.exports = {
-  Aceh: ["Kab A", "Kab B", "Kab C"],
-  Sumut: ["Kab A", "Kab B", "Kab C"]
+  Dog: [
+    "dachshund",
+    "Dalmatian",
+    "Dandie Dinmont Terrier",
+    "Doberman Pinscher",
+    "Dogo Argentino",
+    "Dogue de Bordeaux",
+    "Dutch Shepherd",
+    "Cairn Terrier",
+    "Alaskan Klee Kai",
+    "Chihuahua",
+    
+  ]
 };
