@@ -2,17 +2,10 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import {
-  Col,
-  Form,
-  FormGroup,
-  Label,
-  Input,
   Card,
   CardBody,
-  CardTitle,
   Button,
   CardImg,
-  CardSubtitle,
   CardText
 } from "reactstrap";
 
