@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import { Jumbotron, Container, Button } from "reactstrap";
-//import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import Footer from "../components/Footer":
 
 import "./Home.css";
@@ -37,7 +37,7 @@ class Home extends Component {
               <Container fluid>
                 <h1>Meet your Pawy, Meet your Bestfriend!!</h1>
 
-                <Button outline color="purple">
+                <Button outline color="purple" tag={Link} to='./About'>
                   Learn More
                 </Button>
               </Container>
