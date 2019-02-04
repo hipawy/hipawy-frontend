@@ -60,9 +60,9 @@ class UserDropDown extends React.Component {
     return (
       <DropDown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <Button>
-          <i className="fa fa-user-circle" />{" "}
-          <span style={{ marginLeft: "0px" }} />
-          {user && user.fullname.split(" ")[0]}
+          <i className="fa fa-plus-square" />
+          <span style={{ marginLeft: "8px" }} />
+          <i className="fa fa-caret-down" />
         </Button>
         <DropdownMenu>
           <DropdownItem tag={Link} to="/UserProfile">
