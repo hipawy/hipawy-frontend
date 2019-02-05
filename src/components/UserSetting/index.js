@@ -1,11 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
-import {
-  Container,
-  Row,
-  Col
-} from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import UserProfile from "./UserProfile";
+import { connect } from "react-redux";
+import { fetchUserPets } from "../../store/actions/pets";
+import PetCard from "../PetCard";
 
 const Title = styled.h1`
   font-weight: 1200;
@@ -16,21 +15,40 @@ const ContainerHasStyled = styled(Container)`
   padding: 40px 0;
 `;
 
-const UserSetting = props => {
-  return (
-    <ContainerHasStyled>
-      <Row>
-        <Title>Your Profile</Title>
-      </Row>
-      <Row>
-        <Col xs="12" md="4">
-          <UserProfile />
-        </Col>
-        <Col xs="12" md="8">
-        </Col>
-      </Row>
-    </ContainerHasStyled>
-  );
-};
+class UserSetting extends Component {
+  state = {};
 
-export default UserSetting;
+  componentDidMount() {
+    if (this.props.user) {
+      this.props.fetchUserPets(this.props.user.id);
+    }
+  }
+
+  render() {
+    return (
+      <ContainerHasStyled>
+        <Row />
+        <Row>
+          <Col xs="12" md="2">
+            <UserProfile />
+          </Col>
+          <Col xs="12" md="5">
+            {this.props.userPets.map(({ pet }, i) => (
+              <PetCard pet={pet} key={i} />
+            ))}
+          </Col>
+        </Row>
+      </ContainerHasStyled>
+    );
+  }
+}
+
+const mapStateToProps = store => ({
+  user: store.auth.user,
+  userPets: store.pets.userPets
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchUserPets }
+)(UserSetting);
