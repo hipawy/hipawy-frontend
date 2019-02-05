@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 export const fetchUsers = () => dispatch => {
   const token = Cookies.get("token");
 
-  Axios.get(`${process.env.REACT_APP_API_URL}/api/users`, {
+  Axios.get(`${process.env.REACT_APP_API_URL}/users`, {
     headers: { Authorization: `Bearer ${token}` }
   })
     .then(({ data: { users } }) => {
