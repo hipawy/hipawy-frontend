@@ -1,13 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import {
-  Card,
-  CardBody,
-  Button,
-  CardImg,
-  CardText
-} from "reactstrap";
+import { Card, CardBody, Button, CardImg, CardText } from "reactstrap";
 
 class UserProfile extends Component {
   render() {
@@ -58,7 +52,7 @@ class UserProfile extends Component {
               alt="Card image cap"
             />
             {Object.keys(profile).map((field, i) => (
-              <CardBody key={i} row>
+              <CardBody key={i}>
                 {/* <CardText sm={2}>
                   {field === "fullname" ? "Name" : field}
                 </CardText> */}
