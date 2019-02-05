@@ -3,7 +3,7 @@ import Axios from "axios";
 import Cookies from "js-cookie";
 
 export const fetchPets = () => dispatch => {
-  Axios.get(`${process.env.REACT_APP_API_URL}/pets`)
+  Axios.get(`${process.env.REACT_APP_API_URL}/api/pets`)
     .then(response =>
       dispatch({ type: FETCH_PETS, payload: response.data.pets })
     )
@@ -11,7 +11,7 @@ export const fetchPets = () => dispatch => {
 };
 
 export const fetchUserPets = userId => dispatch => {
-  Axios.get(`${process.env.REACT_APP_API_URL}/users/${userId}/pets`)
+  Axios.get(`${process.env.REACT_APP_API_URL}/api/users/${userId}/pets`)
     .then(response =>
       dispatch({ type: FETCH_USER_PETS, payload: response.data.pets })
     )
@@ -22,7 +22,9 @@ export const deletePet = data => dispatch => {
   const token = Cookies.get("token");
 
   Axios.delete(
-    `${process.env.REACT_APP_API_URL}/users/${data.userId}/pets/${data.petId}`,
+    `${process.env.REACT_APP_API_URL}/api/users/${data.userId}/pets/${
+      data.petId
+    }`,
     {
       headers: { Authorization: `Bearer ${token}` }
     }
@@ -38,7 +40,7 @@ export const createPet = data => dispatch => {
   const token = Cookies.get("token");
 
   Axios.post(
-    `${process.env.REACT_APP_API_URL}/users/${data.userId}/pets`,
+    `${process.env.REACT_APP_API_URL}/api/users/${data.userId}/pets`,
     data,
     {
       headers: { Authorization: `Bearer ${token}` }
