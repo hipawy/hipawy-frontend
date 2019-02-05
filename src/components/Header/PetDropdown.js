@@ -12,8 +12,9 @@ import { connect } from "react-redux";
 import { signOut } from "../../store/actions/auth";
 import { Redirect } from "react-router-dom";
 import AddPet from "../LoginRegister/AddPet";
+import { Col, Button, Row, Card, CardTitle, CardBody } from "reactstrap";
 
-const Button = styled(DropdownToggle)`
+const ButtonDropdown = styled(DropdownToggle)`
   padding: 8px;
   border-radius: 0;
   box-shadow: none;
@@ -27,6 +28,11 @@ const DropDown = styled(Dropdown)`
   padding: 0;
   transition: 1s;
   height: 100%;
+`;
+
+const Loginfont = styled(CardTitle)`
+  font-weight: 1200;
+  font-size: 11vh;
 `;
 
 class UserDropDown extends React.Component {
@@ -58,6 +64,10 @@ class UserDropDown extends React.Component {
     });
   };
 
+  closeModal = () => {
+    this.setState({ modalOpen: false });
+  };
+
   render() {
     const { signOut, user } = this.props;
 
@@ -68,11 +78,11 @@ class UserDropDown extends React.Component {
     return (
       <Fragment>
         <DropDown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <Button>
+          <ButtonDropdown>
             <i className="fa fa-plus-square" />
             <span style={{ marginLeft: "8px" }} />
             <i className="fa fa-caret-down" />
-          </Button>
+          </ButtonDropdown>
           <DropdownMenu>
             <DropdownItem onClick={this.toggleModal}>Add Pet</DropdownItem>
             <DropdownItem divider />
@@ -80,7 +90,19 @@ class UserDropDown extends React.Component {
           </DropdownMenu>
         </DropDown>
         <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal}>
-          <AddPet />
+          <Row noGutters={true}>
+            <Col sm="12">
+              <Button block style={{ borderRadius: 0 }} className="active">
+                Add Pet
+              </Button>
+            </Col>
+          </Row>
+
+          <Card>
+            <CardBody>
+              <AddPet closeModal={this.closeModal} />
+            </CardBody>
+          </Card>
         </Modal>
       </Fragment>
     );

@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createPet } from "../../store/actions/pets";
+import { createPet, fetchUserPets } from "../../store/actions/pets";
 import { Col, Row, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { Checkbox } from "@material-ui/core";
+import ReactFilestack from "filestack-react";
+import { withRouter, Redirect } from "react-router-dom";
 
 import provinces from "../Adress/data";
 
@@ -42,6 +44,13 @@ class AddPet extends React.Component {
     e.preventDefault();
 
     this.props.createPet({ ...this.state, userId: this.props.user.id });
+    this.props.fetchUserPets(this.props.user.id);
+    this.props.history.push("/UserProfile");
+    this.props.closeModal();
+  };
+
+  handleSuccess = result => {
+    this.setState({ photo: result.filesUploaded[0].url });
   };
 
   render() {
@@ -218,12 +227,34 @@ class AddPet extends React.Component {
         <FormGroup>
           <Label for="Desc">Description</Label>
           <Input
-            type="text"
+            type="textarea"
             name="desc"
             id="desc"
             placeholder="Pet Description"
             value={desc}
             onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          {photo && (
+            <img
+              src={photo}
+              alt="pet image"
+              style={{ width: "50%", height: "100px" }}
+            />
+          )}
+          <ReactFilestack
+            apikey={process.env.REACT_APP_FILESTACK_API_KEY}
+            buttonText="select image"
+            buttonClass="classname"
+            options={{
+              accept: "image/*",
+              maxFiles: 5,
+              storeTo: {
+                location: "s3"
+              }
+            }}
+            onSuccess={this.handleSuccess}
           />
         </FormGroup>
         <Checkbox
@@ -242,7 +273,9 @@ const mapStateToProps = store => ({
   user: store.auth.user
 });
 
-export default connect(
-  mapStateToProps,
-  { createPet }
-)(AddPet);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { createPet, fetchUserPets }
+  )(AddPet)
+);
