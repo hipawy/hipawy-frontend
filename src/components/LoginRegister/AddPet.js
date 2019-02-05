@@ -26,7 +26,7 @@ class AddPet extends React.Component {
     desc: "",
     termsCheck: false
   };
-  
+
   componentDidMount() {
     this.setState({ petCategories, provinces });
   }
@@ -43,8 +43,12 @@ class AddPet extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.createPet({ ...this.state, userId: this.props.user.id });
+    this.props.createPet({
+      ...this.state,
+      userId: this.props.user.id
+    });
     this.props.fetchUserPets(this.props.user.id);
+    // this.props.fetchUserPets();
     this.props.history.push("/UserProfile");
     this.props.closeModal();
   };

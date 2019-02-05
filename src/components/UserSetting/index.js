@@ -21,8 +21,8 @@ class UserSetting extends Component {
           <Col xs="12" md="9">
             <Row>
               {this.props.userPets.map(({ pet }, i) => (
-                <Col xs="12" md="4">
-                  <PetCard pet={pet} key={i} />
+                <Col xs="12" md="4" key={i}>
+                <PetCard pet={pet} />
                 </Col>
               ))}
             </Row>
