@@ -15,13 +15,17 @@ class UserSetting extends Component {
       <ContainerHasStyled>
         <Row />
         <Row>
-          <Col xs="12" md="2">
+          <Col xs="12" md="3">
             <UserProfile />
           </Col>
-          <Col xs="12" md="5">
-            {this.props.userPets.map(({ pet }, i) => (
-              <PetCard pet={pet} key={i} />
-            ))}
+          <Col xs="12" md="9">
+            <Row>
+              {this.props.userPets.map(({ pet }, i) => (
+                <Col xs="12" md="4">
+                  <PetCard pet={pet} key={i} />
+                </Col>
+              ))}
+            </Row>
           </Col>
         </Row>
       </ContainerHasStyled>
