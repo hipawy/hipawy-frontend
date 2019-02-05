@@ -26,7 +26,7 @@ class AddPet extends React.Component {
     desc: "",
     termsCheck: false
   };
-
+  
   componentDidMount() {
     this.setState({ petCategories, provinces });
   }
