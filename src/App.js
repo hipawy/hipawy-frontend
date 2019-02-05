@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Axios from "axios";
 
 import { signInAction } from "./store/actions/auth";
+import { fetchUserPets } from "./store/actions/pets";
 
 import Home from "./views/Home";
 import About from "./views/About";
@@ -30,6 +31,7 @@ class App extends Component {
 
         if (response.status !== 500) {
           this.props.signInAction(response.data.user);
+          this.props.fetchUserPets(response.data.user.id);
         }
       }
     } catch (err) {}
@@ -55,5 +57,5 @@ class App extends Component {
 
 export default connect(
   null,
-  { signInAction }
+  { signInAction, fetchUserPets }
 )(App);
