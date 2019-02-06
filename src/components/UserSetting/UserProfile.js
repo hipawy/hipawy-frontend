@@ -58,7 +58,7 @@ class UserProfile extends Component {
           </Fragment>
         );
       } else {
-        return <UserUpdate />;
+        return <UserUpdate userId={this.props.userId} />;
       }
     } else {
       return null;

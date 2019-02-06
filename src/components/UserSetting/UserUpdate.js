@@ -12,11 +12,13 @@ class UserUpdate extends Component {
     fullname: "",
     address: "",
     phone: 0,
-    email: ""
+    email: "",
+    id: 0
   };
 
   componentDidMount() {
-    this.setState({ data: provinces });
+    const userId = parseInt(this.props.userId);
+    this.setState({ data: provinces, id: userId });
   }
 
   handleChange = e => {
@@ -25,7 +27,8 @@ class UserUpdate extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
+    console.log(this.props);
+    console.log(this.state);
     this.props.updateUserProfile(this.state);
   };
 

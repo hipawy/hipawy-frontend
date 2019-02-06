@@ -71,7 +71,7 @@ class UserDropDown extends React.Component {
           {user && user.fullname.split(" ")[0]}
         </Button>
         <DropdownMenu>
-          <DropdownItem tag={Link} to="/UserProfile">
+          <DropdownItem tag={Link} to={`/UserProfile/${user.id}`}>
             Profile
           </DropdownItem>
           <DropdownItem divider />

@@ -18,12 +18,13 @@ class UserSetting extends Component {
   }
 
   render() {
+    const userId = this.props.match.params.id;
     return (
       <ContainerHasStyled>
         <Row />
         <Row>
           <Col xs="12" md="3">
-            <UserProfile />
+            <UserProfile userId={userId} />
           </Col>
           <Col xs="12" md="9">
             <Row>

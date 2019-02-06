@@ -17,34 +17,30 @@ export const fetchUsers = () => dispatch => {
     });
 };
 
-export const fetchUser = (userId) => dispatch => {
+export const fetchUser = userId => dispatch => {
   const token = Cookies.get("token");
 
   Axios.get(`${process.env.REACT_APP_API_URL}/users/${userId}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
-    .then(({ data: { user } }) => {
-      console.log(user);
-      dispatch({ type: FETCH_USER, payload: user });
+    .then(response => {
+      dispatch({ type: FETCH_USER, payload: response.data.user });
     })
     .catch(err => {
       console.error(err);
     });
 };
 
-export const updateUserProfile = userId => dispatch => {
-  const token = Cookies.get("token");
+export const updateUserProfile = data => dispatch => {
+  // const token = Cookies.get("token");
+  // console.log(token);
 
-  Axios.patch(`${process.env.REACT_APP_API_URL}/users/${userId}`, {
-    headers: { Authorization: `Bearer ${token}` }
-  })
-    .then(({ data: { user } }) => {
-      console.log(user);
-      
-      dispatch({ type: UPDATE_USER_PROFILE, payload: user })
-      // dispatch({fetchUser(userId)})
+  Axios.patch(`${process.env.REACT_APP_API_URL}/users/${data.id}`)
+    .then(response => {
+      dispatch({ type: UPDATE_USER_PROFILE, payload: response.data.user });
+      dispatch(fetchUser(data.id));
     })
     .catch(err => {
       console.error(err);
     });
-}
+};
