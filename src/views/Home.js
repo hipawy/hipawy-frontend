@@ -34,7 +34,6 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
-        PetCard
         <Body>
           <JumboStyle fluid>
             <Container fluid>

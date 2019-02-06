@@ -10,6 +10,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/auth";
 import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const Button = styled(DropdownToggle)`
   padding: 8px;
@@ -54,6 +55,11 @@ class UserDropDown extends React.Component {
     });
   };
 
+  handleSignOut = e => {
+    this.props.signOut();
+    this.props.history.push("/");
+  };
+
   render() {
     const { signOut, user } = this.props;
 
@@ -73,7 +79,7 @@ class UserDropDown extends React.Component {
             Profile
           </DropdownItem>
           <DropdownItem divider />
-          <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
+          <DropdownItem onClick={this.handleSignOut}>Sign Out</DropdownItem>
         </DropdownMenu>
       </DropDown>
     );
@@ -84,7 +90,9 @@ const mapStateToProps = store => ({
   user: store.auth.user
 });
 
-export default connect(
-  mapStateToProps,
-  { signOut }
-)(UserDropDown);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { signOut }
+  )(UserDropDown)
+);

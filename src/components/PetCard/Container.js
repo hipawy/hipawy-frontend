@@ -1,9 +1,18 @@
-import React, { Component, Fragment } from "react";
-import { Button } from "reactstrap";
+import React, { Component } from "react";
+import { Button, Col, Row, Container } from "reactstrap";
 import { connect } from "react-redux";
 import { fetchPets } from "../../store/actions/pets";
 import { Redirect } from "react-router-dom";
 import Card from "./Card";
+import styled from "styled-components";
+
+const StyledRow = styled(Row)`
+  height: 20%;
+`;
+
+const StyledCol = styled(Col)`
+  margin-bottom: 5vh;
+`;
 
 class PetCardHome extends Component {
   state = {
@@ -22,9 +31,16 @@ class PetCardHome extends Component {
     const { pets } = this.props;
 
     return (
-      <Fragment>
-        {pets && pets.map((pet, i) => <Card key={i} pet={pet} />)}
-      </Fragment>
+      <Container>
+        <StyledRow xs="12">
+          {pets &&
+            pets.map((pet, i) => (
+              <StyledCol md="4">
+                <Card key={i} pet={pet} />
+              </StyledCol>
+            ))}
+        </StyledRow>
+      </Container>
     );
   }
 }
