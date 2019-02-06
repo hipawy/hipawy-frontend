@@ -45,24 +45,21 @@ class UserProfile extends Component {
         </Form> */}
 
           <Card>
-            <CardImg
-              top
-              height="80%"
-              src="https://avatars1.githubusercontent.com/u/26826052?s=460&v=4"
-              alt="Card image cap"
-            />
-            {Object.keys(profile).map((field, i) => (
-              <CardBody key={i}>
-                {/* <CardText sm={2}>
+            <img src={user.photo} className="w-100" alt="user image" />
+            {Object.keys(profile)
+              .filter(field => field !== "photo")
+              .map((field, i) => (
+                <CardBody key={i}>
+                  {/* <CardText sm={2}>
                   {field === "fullname" ? "Name" : field}
                 </CardText> */}
 
-                <CardText>
-                  {profile[field]}
-                  {true}
-                </CardText>
-              </CardBody>
-            ))}
+                  <CardText>
+                    {profile[field]}
+                    {true}
+                  </CardText>
+                </CardBody>
+              ))}
             <Button>Edit Profile</Button>
           </Card>
         </Fragment>
