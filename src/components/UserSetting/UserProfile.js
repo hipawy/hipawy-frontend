@@ -1,11 +1,26 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Card, CardBody, Button, CardImg, CardText } from "reactstrap";
+import UserUpdate from "./UserUpdate";
+import { Card, CardBody, Button, CardText } from "reactstrap";
 
 class UserProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      update: false
+    };
+  }
+
+  toUpdate = () => {
+    this.setState(prevState => ({
+      update: !prevState.update
+    }));
+  };
+
   render() {
     const { user, isAuthenticated } = this.props;
+    console.log(this.state.update);
 
     if (user) {
       const {
@@ -23,47 +38,28 @@ class UserProfile extends Component {
         return <Redirect to="/" />;
       }
 
-      return (
-        <Fragment>
-          {/* <Form>
-            {Object.keys(profile).map((field, i) => (
-              <FormGroup key={i} row>
-                <Label sm={2}>
-                  {field === "fullname" ? "Name" : field}
-                </Label>
-                <Col sm={10}>
-                  <Input
-                    value={profile[field]}
-                    type="text"
-                    name="fullName"
-                    id="name"
-                    readOnly={true}
-                  />
-                </Col>
-              </FormGroup>
-            ))}
-        </Form> */}
-
-          <Card>
-            <img src={user.photo} className="w-100" alt="user image" />
-            {Object.keys(profile)
-              .filter(field => field !== "photo")
-              .map((field, i) => (
-                <CardBody key={i}>
-                  {/* <CardText sm={2}>
-                  {field === "fullname" ? "Name" : field}
-                </CardText> */}
-
-                  <CardText>
-                    {profile[field]}
-                    {true}
-                  </CardText>
-                </CardBody>
-              ))}
-            <Button>Edit Profile</Button>
-          </Card>
-        </Fragment>
-      );
+      if (this.state.update === false) {
+        return (
+          <Fragment>
+            <Card>
+              <img src={user.photo} className="w-100" alt="user image" />
+              {Object.keys(profile)
+                .filter(field => field !== "photo")
+                .map((field, i) => (
+                  <CardBody key={i}>
+                    <CardText>
+                      {profile[field]}
+                      {true}
+                    </CardText>
+                  </CardBody>
+                ))}
+              <Button onClick={this.toUpdate}>Edit</Button>
+            </Card>
+          </Fragment>
+        );
+      } else {
+        return <UserUpdate />;
+      }
     } else {
       return null;
     }

@@ -28,10 +28,6 @@ const DropDown = styled(Dropdown)`
   height: 100%;
 `;
 
-const DropDownItem = styled(DropdownItem)`
-  width: 18.4vw;
-`;
-
 class UserDropDown extends React.Component {
   constructor(props) {
     super(props);
@@ -61,7 +57,7 @@ class UserDropDown extends React.Component {
   };
 
   render() {
-    const { signOut, user } = this.props;
+    const { user } = this.props;
 
     if (this.state.isRedirectedtoProfile) {
       return <Redirect to="/profile" />;

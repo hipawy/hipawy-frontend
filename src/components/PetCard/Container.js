@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Button, Col, Row, Container } from "reactstrap";
+import { Col, Row, Container } from "reactstrap";
 import { connect } from "react-redux";
 import { fetchPets } from "../../store/actions/pets";
-import { Redirect } from "react-router-dom";
 import Card from "./Card";
 import styled from "styled-components";
 
@@ -48,7 +47,9 @@ class PetCardHome extends Component {
           {pets &&
             pets.map((pet, i) => (
               <StyledCol md="4">
-                <Card key={i} pet={pet} onClick={this.toggle}>{this.props.buttonLabel} </Card>
+                <Card key={i} pet={pet} onClick={this.toggle}>
+                  {this.props.buttonLabel}{" "}
+                </Card>
               </StyledCol>
             ))}
         </StyledRow>

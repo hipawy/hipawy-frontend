@@ -36,7 +36,6 @@ const Container = styled.div`
   padding: 0 0 0 3vw;
 `;
 
-
 const NavLeft = styled.div`
   display: flex;
   justify-content: space-between;
@@ -109,7 +108,6 @@ class Header extends Component {
     }
   };
   render() {
-    let icon_login;
     const { isAuthenticated, isSignUpSuccess } = this.props;
 
     return (

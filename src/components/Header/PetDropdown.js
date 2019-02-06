@@ -6,13 +6,12 @@ import {
   DropdownItem,
   Modal
 } from "reactstrap";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/auth";
 import { Redirect } from "react-router-dom";
 import AddPet from "../LoginRegister/AddPet";
-import { Col, Button, Row, Card, CardTitle, CardBody } from "reactstrap";
+import { Col, Button, Row, Card, CardBody } from "reactstrap";
 
 const ButtonDropdown = styled(DropdownToggle)`
   padding: 8px;
@@ -28,11 +27,6 @@ const DropDown = styled(Dropdown)`
   padding: 0;
   transition: 1s;
   height: 100%;
-`;
-
-const Loginfont = styled(CardTitle)`
-  font-weight: 1200;
-  font-size: 11vh;
 `;
 
 class UserDropDown extends React.Component {
@@ -69,7 +63,6 @@ class UserDropDown extends React.Component {
   };
 
   render() {
-    const { signOut, user } = this.props;
 
     if (this.state.isRedirectedtoProfile) {
       return <Redirect to="/profile" />;

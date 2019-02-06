@@ -4,7 +4,7 @@ import { createPet, fetchUserPets } from "../../store/actions/pets";
 import { Col, Row, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { Checkbox } from "@material-ui/core";
 import ReactFilestack from "filestack-react";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import provinces from "../Adress/data";
 
