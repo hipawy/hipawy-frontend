@@ -40,8 +40,12 @@ class PetCard extends React.Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  toggle = petId => {
+  toggleAndFetch = petId => {
     this.props.fetchPetUser(petId);
+    this.toggle();
+  };
+
+  toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
@@ -51,7 +55,7 @@ class PetCard extends React.Component {
     const { pet, user } = this.props;
     return (
       <div>
-        <StyledCard onClick={() => this.toggle(pet.id)}>
+        <StyledCard onClick={() => this.toggleAndFetch(pet.id)}>
           <CardImg src={pet.photo} alt="pet image" />
           <CardBody>
             <CardTitle>{pet.name}</CardTitle>
@@ -74,10 +78,12 @@ class PetCard extends React.Component {
             {pet.breed} <br />
             {pet.age} <br />
             {pet.desc}
-            {user && (
+            {user ? (
               <div>
                 <h1>{user.fullname}</h1>
               </div>
+            ) : (
+              <p>loading</p>
             )}
           </ModalBody>
           <ModalFooter>
