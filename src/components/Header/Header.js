@@ -23,6 +23,7 @@ import Login from "../LoginRegister/Login";
 import Register from "../LoginRegister/Register";
 import UserDropDown from "./UserDropdown";
 import { signUp } from "../../store/actions/auth";
+import PetDropdown from "./PetDropdown";
 
 const Logo = styled.img`
   height: 7vh;
@@ -86,6 +87,10 @@ const Loginfont = styled(CardTitle)`
   font-size: 11vh;
 `;
 
+const DropdownGroup = styled.div`
+  display: flex;
+`;
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -94,15 +99,13 @@ class Header extends Component {
       activeTab: "1",
       dropdownOpen: true
     };
-
-    this.toggle = this.toggle.bind(this);
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
-  }
+  };
 
   toggleTab = param => {
     if (this.state.activeTab !== param) {
@@ -113,6 +116,7 @@ class Header extends Component {
     let icon_login;
     const { isAuthenticated, isSignUpSuccess } = this.props;
 
+<<<<<<< HEAD
     if (isAuthenticated === true) {
       icon_login = <UserDropDown />;
     } else {
@@ -187,6 +191,8 @@ class Header extends Component {
       );
     }
 
+=======
+>>>>>>> 99a2a40c1bf4ba39d0574d8a50a500038c2ba0c0
     return (
       <div>
         <NavBar expand="md">
@@ -214,9 +220,88 @@ class Header extends Component {
               </Nav>
             </NavLeft>
 
-            <Nav>
-              <JoinUs onClick={this.toggle}>{icon_login}</JoinUs>
-            </Nav>
+            {isAuthenticated ? (
+              <DropdownGroup>
+                <PetDropdown />
+                <UserDropDown />
+              </DropdownGroup>
+            ) : (
+              <Nav>
+                <JoinUs onClick={this.toggle}>
+                  <Fragment>
+                    <div>
+                      <Modal
+                        isOpen={this.state.modal}
+                        toggle={this.toggle}
+                        size="md"
+                      >
+                        <Row noGutters={true}>
+                          <Col sm="6">
+                            <Button
+                              block
+                              style={{ borderRadius: 0 }}
+                              className={classnames({
+                                active: this.state.activeTab === "1"
+                              })}
+                              onClick={() => {
+                                this.toggleTab("1");
+                              }}
+                            >
+                              Login
+                            </Button>
+                          </Col>
+
+                          <Col sm="6">
+                            <Button
+                              block
+                              style={{ borderRadius: 0 }}
+                              className={classnames({
+                                active: this.state.activeTab === "2"
+                              })}
+                              onClick={() => {
+                                this.toggleTab("2");
+                              }}
+                            >
+                              Register
+                            </Button>
+                          </Col>
+                        </Row>
+
+                        <Collapse isOpen={this.state.activeTab === "1"}>
+                          <Card>
+                            <CardBody>
+                              <Loginfont>Sign In</Loginfont>
+                              <Login />
+                            </CardBody>
+                          </Card>
+                        </Collapse>
+                        <Collapse isOpen={this.state.activeTab === "2"}>
+                          <Card>
+                            <CardBody>
+                              {isSignUpSuccess ? (
+                                <Fragment>
+                                  <Loginfont>Sign In</Loginfont>
+                                  <Login id="mantap" />
+                                </Fragment>
+                              ) : (
+                                <Fragment>
+                                  <Loginfont>Register</Loginfont>
+                                  <Register />
+                                </Fragment>
+                              )}
+                            </CardBody>
+                          </Card>
+                        </Collapse>
+                      </Modal>
+                    </div>
+                    <LoginRegister>
+                      <i className="fa fa-user" />
+                      <span style={{ marginLeft: "10px" }}>Join Us</span>
+                    </LoginRegister>
+                  </Fragment>
+                </JoinUs>
+              </Nav>
+            )}
           </Container>
         </NavBar>
       </div>

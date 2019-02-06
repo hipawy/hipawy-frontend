@@ -1,14 +1,23 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { Col, Form, FormGroup, Label, Input } from "reactstrap";
+import { Card, CardBody, Button, CardImg, CardText } from "reactstrap";
 
-class UserList extends Component {
+class UserProfile extends Component {
   render() {
     const { user, isAuthenticated } = this.props;
 
     if (user) {
-      const { password, id, createdAt, updatedAt, ...profile } = user;
+      const {
+        password,
+        id,
+        province,
+        city,
+        email,
+        createdAt,
+        updatedAt,
+        ...profile
+      } = user;
 
       if (!isAuthenticated) {
         return <Redirect to="/signin" />;
@@ -16,10 +25,12 @@ class UserList extends Component {
 
       return (
         <Fragment>
-          <Form>
+          {/* <Form>
             {Object.keys(profile).map((field, i) => (
               <FormGroup key={i} row>
-                <Label sm={2}>{field === "fullname" ? "Name" : field}</Label>
+                <Label sm={2}>
+                  {field === "fullname" ? "Name" : field}
+                </Label>
                 <Col sm={10}>
                   <Input
                     value={profile[field]}
@@ -31,7 +42,26 @@ class UserList extends Component {
                 </Col>
               </FormGroup>
             ))}
-          </Form>
+        </Form> */}
+
+          <Card>
+            <img src={user.photo} className="w-100" alt="user image" />
+            {Object.keys(profile)
+              .filter(field => field !== "photo")
+              .map((field, i) => (
+                <CardBody key={i}>
+                  {/* <CardText sm={2}>
+                  {field === "fullname" ? "Name" : field}
+                </CardText> */}
+
+                  <CardText>
+                    {profile[field]}
+                    {true}
+                  </CardText>
+                </CardBody>
+              ))}
+            <Button>Edit Profile</Button>
+          </Card>
         </Fragment>
       );
     } else {
@@ -45,4 +75,4 @@ const mapStateToProps = store => ({
   user: store.auth.user
 });
 
-export default connect(mapStateToProps)(UserList);
+export default connect(mapStateToProps)(UserProfile);

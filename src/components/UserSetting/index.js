@@ -1,31 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
-import { Card, CardTitle, CardGroup, CardBody } from "reactstrap";
-import UserUpdate from "./UserUpdate";
+import { Container, Row, Col } from "reactstrap";
+import UserProfile from "./UserProfile";
+import { connect } from "react-redux";
+import PetCard from "../PetCard";
 
-const Title = styled(CardTitle)`
-  font-weight: 1200;
-  font-size: 7vh;
+const ContainerHasStyled = styled(Container)`
+  padding: 40px 0;
 `;
 
-const Cards = styled(CardGroup)`
-  display: flex;
-  // flex-direction: column;
-  text-align: center;
-  height: 50%;
-`;
+class UserSetting extends Component {
+  render() {
+    return (
+      <ContainerHasStyled>
+        <Row />
+        <Row>
+          <Col xs="12" md="3">
+            <UserProfile />
+          </Col>
+          <Col xs="12" md="9">
+            <Row>
+              {this.props.userPets.map(({ pet }, i) => (
+                <Col xs="12" md="4" key={i}>
+                <PetCard pet={pet} />
+                </Col>
+              ))}
+            </Row>
+          </Col>
+        </Row>
+      </ContainerHasStyled>
+    );
+  }
+}
 
-const UserSetting = props => {
-  return (
-    <Cards>
-      <Card>
-        <CardBody>
-          <Title>Update Profile</Title>
-          <UserUpdate />
-        </CardBody>
-      </Card>
-    </Cards>
-  );
-};
+const mapStateToProps = store => ({
+  userPets: store.pets.userPets
+});
 
-export default UserSetting;
+export default connect(mapStateToProps)(UserSetting);

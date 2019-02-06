@@ -5,16 +5,19 @@ import {
   DropdownMenu,
   DropdownItem
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/auth";
 import { Redirect } from "react-router-dom";
 
 const Button = styled(DropdownToggle)`
+  padding: 8px;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #943096 !important;
   margin: 0;
-  padding: 3vh 12vh;
   height: 100%;
-  font-size: 4vh;
 `;
 
 const DropDown = styled(Dropdown)`
@@ -60,11 +63,23 @@ class UserDropDown extends React.Component {
 
     return (
       <DropDown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-        <Button>{user && user.fullname.split(" ")[0]}</Button>
+        <Button>
+          <i className="fa fa-user-circle" />{" "}
+          <span style={{ marginLeft: "0px" }} />
+          {user && user.fullname.split(" ")[0]}
+        </Button>
         <DropdownMenu>
+<<<<<<< HEAD
           <DropDownItem onClick={this.toProfile}>Profile</DropDownItem>
           <DropDownItem divider />
           <DropDownItem onClick={signOut}>Sign Out</DropDownItem>
+=======
+          <DropdownItem tag={Link} to="/UserProfile">
+            Profile
+          </DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
+>>>>>>> 99a2a40c1bf4ba39d0574d8a50a500038c2ba0c0
         </DropdownMenu>
       </DropDown>
     );

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { signUp } from "../../store/actions/auth";
+import ReactFilestack from "filestack-react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 import provinces from "../Adress/data";
@@ -16,6 +17,7 @@ class Register extends React.Component {
     phone: 0,
     email: "",
     password: "",
+    photo:"",
     termsCheck: false
   };
 
@@ -37,6 +39,11 @@ class Register extends React.Component {
 
     this.props.signUp(this.state);
   };
+
+  handleSuccess = result => {
+    this.setState({ photo: result.filesUploaded[0].url });
+  };
+
   render() {
     let SubmitButton;
 
@@ -48,7 +55,8 @@ class Register extends React.Component {
       city,
       phone,
       email,
-      password
+      password,
+      photo
     } = this.state;
 
     if (this.state.termsCheck === true) {
@@ -172,6 +180,28 @@ class Register extends React.Component {
             </FormGroup>
           </Col>
         </Row>
+        <FormGroup>
+          {photo && (
+            <img
+              src={photo}
+              alt="pet image"
+              style={{ width: "50%", height: "100px" }}
+            />
+          )}
+          <ReactFilestack
+            apikey={process.env.REACT_APP_FILESTACK_API_KEY}
+            buttonText="select image"
+            buttonClass="classname"
+            options={{
+              accept: "image/*",
+              maxFiles: 5,
+              storeTo: {
+                location: "s3"
+              }
+            }}
+            onSuccess={this.handleSuccess}
+          />
+        </FormGroup>
 
         <Checkbox
           name="termsCheck"
