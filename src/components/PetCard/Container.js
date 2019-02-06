@@ -15,9 +15,21 @@ const StyledCol = styled(Col)`
 `;
 
 class PetCardHome extends Component {
-  state = {
-    isComplete: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isComplete: false,
+      modal: false
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
 
   componentDidMount() {
     this.props.fetchPets(this.props);
@@ -36,7 +48,7 @@ class PetCardHome extends Component {
           {pets &&
             pets.map((pet, i) => (
               <StyledCol md="4">
-                <Card key={i} pet={pet} />
+                <Card key={i} pet={pet} onClick={this.toggle}>{this.props.buttonLabel} </Card>
               </StyledCol>
             ))}
         </StyledRow>

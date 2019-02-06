@@ -36,10 +36,6 @@ const Container = styled.div`
   padding: 0 0 0 3vw;
 `;
 
-const JoinUsArea = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
 
 const NavLeft = styled.div`
   display: flex;
