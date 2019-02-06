@@ -1,4 +1,5 @@
 module.exports = {
-  Aceh: ["Kab A", "Kab B", "Kab C"],
-  Sumut: ["Kab A", "Kab B", "Kab C"]
+  Cat: ["Kab A", "Kab B", "Kab C"],
+  Dog: ["Kab A", "Kab B", "Kab C"]
 };
+UserProfile;

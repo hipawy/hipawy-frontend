@@ -24,6 +24,10 @@ const DropDown = styled(Dropdown)`
   height: 100%;
 `;
 
+const DropDownItem = styled(DropdownItem)`
+  width: 18.4vw;
+`;
+
 class UserDropDown extends React.Component {
   constructor(props) {
     super(props);
@@ -58,9 +62,9 @@ class UserDropDown extends React.Component {
       <DropDown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <Button>{user && user.fullname.split(" ")[0]}</Button>
         <DropdownMenu>
-          <DropdownItem onClick={this.toProfile}>Profile</DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
+          <DropDownItem onClick={this.toProfile}>Profile</DropDownItem>
+          <DropDownItem divider />
+          <DropDownItem onClick={signOut}>Sign Out</DropDownItem>
         </DropdownMenu>
       </DropDown>
     );

@@ -35,6 +35,11 @@ const Container = styled.div`
   padding: 0 0 0 3vw;
 `;
 
+const JoinUsArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const NavLeft = styled.div`
   display: flex;
   justify-content: space-between;
@@ -44,6 +49,7 @@ const NavLeft = styled.div`
 
 const LoginRegister = styled.div`
   margin: 10px 20px;
+  font-size: 3vh;
 `;
 
 const NavTags = styled(NavLink)`
@@ -111,7 +117,7 @@ class Header extends Component {
       icon_login = <UserDropDown />;
     } else {
       icon_login = (
-        <div>
+        <JoinUsArea>
           <div>
             <Modal isOpen={this.state.modal} toggle={this.toggle} size="md">
               <Row noGutters={true}>
@@ -177,7 +183,7 @@ class Header extends Component {
             <i className="fa fa-user" />
             <span style={{ marginLeft: "10px" }}>Join Us</span>
           </LoginRegister>
-        </div>
+        </JoinUsArea>
       );
     }
 

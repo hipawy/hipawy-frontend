@@ -11,6 +11,7 @@ import About from "./views/About";
 import PetCare from "./views/PetCare";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer";
+import Profile from "./views/Profile";
 
 class App extends Component {
   async componentDidMount() {
@@ -43,6 +44,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/About" exact component={About} />
             <Route path="/PetCare" exact component={PetCare} />
+            <Route path="/Profile" exact component={Profile} />
           </Switch>
           <Footer />
         </Fragment>
