@@ -13,6 +13,8 @@ import {
   Button
 } from "reactstrap";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { fetchPetUser } from "../../store/actions/pets";
 
 const StyledCard = styled(Card)`
   height: 100%;
@@ -22,11 +24,11 @@ const StyledCard = styled(Card)`
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
       0 3px 1px -2px rgba(0, 0, 0, 0.2);
   }
-`
+`;
 
 const StyledModal = styled(Modal)`
-max-width: 1000px`
-
+  max-width: 1000px;
+`;
 
 class PetCard extends React.Component {
   constructor(props) {
@@ -38,24 +40,27 @@ class PetCard extends React.Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  toggle() {
+  toggle = petId => {
+    this.props.fetchPetUser(petId);
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-  }
+  };
 
   render() {
-    const { pet } = this.props;
+    const { pet, user } = this.props;
     return (
       <div>
-        <StyledCard onClick={this.toggle}>
+        <StyledCard onClick={() => this.toggle(pet.id)}>
           <CardImg src={pet.photo} alt="pet image" />
           <CardBody>
             <CardTitle>{pet.name}</CardTitle>
             <CardSubtitle>
               {pet.breed} spasi {pet.age}
             </CardSubtitle>
-            <CardText>{pet.city}, spasi {pet.province}</CardText>
+            <CardText>
+              {pet.city}, spasi {pet.province}
+            </CardText>
           </CardBody>
         </StyledCard>
         <StyledModal
@@ -65,10 +70,15 @@ class PetCard extends React.Component {
         >
           <ModalHeader toggle={this.toggle}>{pet.name}</ModalHeader>
           <ModalBody>
-            <img src={pet.photo} alt="pet image" /> <br/>
-            {pet.breed} <br/>
-            {pet.age}  <br />
+            <img src={pet.photo} alt="pet image" /> <br />
+            {pet.breed} <br />
+            {pet.age} <br />
             {pet.desc}
+            {user && (
+              <div>
+                <h1>{user.fullname}</h1>
+              </div>
+            )}
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>
@@ -84,4 +94,11 @@ class PetCard extends React.Component {
   }
 }
 
-export default PetCard;
+const mapStateToProps = store => ({
+  user: store.pets.user
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchPetUser }
+)(PetCard);
