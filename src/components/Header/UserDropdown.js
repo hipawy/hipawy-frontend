@@ -69,17 +69,11 @@ class UserDropDown extends React.Component {
           {user && user.fullname.split(" ")[0]}
         </Button>
         <DropdownMenu>
-<<<<<<< HEAD
-          <DropDownItem onClick={this.toProfile}>Profile</DropDownItem>
-          <DropDownItem divider />
-          <DropDownItem onClick={signOut}>Sign Out</DropDownItem>
-=======
           <DropdownItem tag={Link} to="/UserProfile">
             Profile
           </DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={signOut}>Sign Out</DropdownItem>
->>>>>>> 99a2a40c1bf4ba39d0574d8a50a500038c2ba0c0
         </DropdownMenu>
       </DropDown>
     );
