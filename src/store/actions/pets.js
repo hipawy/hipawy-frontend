@@ -1,4 +1,10 @@
-import { CREATE_PET, DELETE_PET, FETCH_PETS, FETCH_USER_PETS } from "../types";
+import {
+  CREATE_PET,
+  DELETE_PET,
+  FETCH_PETS,
+  FETCH_USER_PETS,
+  FETCH_USER_DATA
+} from "../types";
 import Axios from "axios";
 import Cookies from "js-cookie";
 
@@ -15,6 +21,17 @@ export const fetchUserPets = userId => dispatch => {
     .then(response =>
       dispatch({ type: FETCH_USER_PETS, payload: response.data.pets })
     )
+    .catch(err => console.error(err));
+};
+
+export const fetchPetUser = petId => dispatch => {
+  Axios.get(`${process.env.REACT_APP_API_URL}/pets/${petId}`)
+    .then(response => {
+      dispatch({
+        type: FETCH_USER_DATA,
+        payload: response.data.petUser.user
+      });
+    })
     .catch(err => console.error(err));
 };
 
