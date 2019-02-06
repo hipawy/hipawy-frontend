@@ -18,6 +18,7 @@ class Login extends React.Component {
 
     this.props.signIn(this.state);
   };
+
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
@@ -47,7 +48,11 @@ class Login extends React.Component {
   }
 }
 
+const mapStateToProps = store => ({
+  user: store.auth.user
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { signIn }
 )(Login);

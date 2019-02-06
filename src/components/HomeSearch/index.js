@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
-import styled from "styled-components";
+import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import petsearch from "./Pettype";
 
 export default class Search extends Component {
   state = {
@@ -20,7 +21,12 @@ export default class Search extends Component {
     console.log(state);
   };
 
+  componentDidMount() {
+    this.setState({ data: petsearch });
+  }
+
   render() {
+    const { data, pettype, breed } = this.state;
     return (
       <Fragment>
         <Form onSubmit={this.handleSubmit}>
@@ -70,6 +76,7 @@ export default class Search extends Component {
               </FormGroup>
             </Col>
           </Row>
+          <Button type="submit">Search</Button>
         </Form>
       </Fragment>
     );

@@ -26,7 +26,7 @@ class AddPet extends React.Component {
     desc: "",
     termsCheck: false
   };
-  
+
   componentDidMount() {
     this.setState({ petCategories, provinces });
   }
@@ -152,6 +152,9 @@ class AddPet extends React.Component {
                 value={gender}
                 onChange={this.handleChange}
               >
+                <option disabled value="">
+                  Gender
+                </option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </Input>

@@ -20,7 +20,7 @@ class UserProfile extends Component {
       } = user;
 
       if (!isAuthenticated) {
-        return <Redirect to="/signin" />;
+        return <Redirect to="/" />;
       }
 
       return (

@@ -267,4 +267,3 @@ module.exports = {
     "Turkish Van"
   ]
 };
-UserProfile;

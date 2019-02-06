@@ -2,6 +2,9 @@ import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import { Jumbotron, Container, Button } from "reactstrap";
 import { Link } from "react-router-dom";
+import HomeSearch from "../components/HomeSearch";
+import PetCard from "../components/PetCard/Container";
+
 // import Footer from "../components/Footer":
 
 import "./Home.css";
@@ -31,20 +34,20 @@ class Home extends Component {
   render() {
     return (
       <Fragment>
+        PetCard
         <Body>
-          
-            <JumboStyle fluid>
-              <Container fluid>
-                <h1>Meet your Pawy, Meet your Bestfriend!!</h1>
+          <JumboStyle fluid>
+            <Container fluid>
+              <h1>Meet your Pawy, Meet your Bestfriend!!</h1>
 
-                <Button outline color="purple" tag={Link} to='./About'>
-                  Learn More
-                </Button>
-              </Container>
-            </JumboStyle>
-        
+              <Button outline color="purple" tag={Link} to="./About">
+                Learn More
+              </Button>
+            </Container>
+          </JumboStyle>
         </Body>
-
+        <HomeSearch />
+        <PetCard />
         <section className="step">
           <div className="container">
             <div className="row ">
