@@ -11,3 +11,4 @@ export const FETCH_USER_PETS = "FETCH_USER_PETS";
 export const FETCH_USER_DATA = "FETCH_USER_DATA";
 export const CREATE_PET = "CREATE_PET";
 export const DELETE_PET = "DELETE_PET";
+export const UPDATE_PET_PROFILE = "UPDATE_PET_PROFILE"
