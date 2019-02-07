@@ -31,7 +31,7 @@ class PetCardHome extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPets(this.props);
+    this.props.fetchPets();
   }
 
   handleClick = () => {
@@ -46,8 +46,8 @@ class PetCardHome extends Component {
         <StyledRow xs="12">
           {pets &&
             pets.map((pet, i) => (
-              <StyledCol md="4">
-                <Card key={i} pet={pet} onClick={this.toggle}>
+              <StyledCol key={i} md="4">
+                <Card pet={pet} onClick={this.toggle}>
                   {this.props.buttonLabel}{" "}
                 </Card>
               </StyledCol>
