@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import petsearch from "./Pettype";
+import { fetchPets } from "../../store/actions/pets";
+import { connect } from "react-redux";
 
-export default class Search extends Component {
+class Search extends Component {
   state = {
     data: null,
-    pettype: "",
+    category: "",
     breed: ""
   };
 
@@ -17,8 +19,7 @@ export default class Search extends Component {
     e.preventDefault();
 
     const { data, ...state } = this.state;
-
-    console.log(state);
+    this.props.fetchPets(this.state.category, this.state.breed);
   };
 
   componentDidMount() {
@@ -26,28 +27,28 @@ export default class Search extends Component {
   }
 
   render() {
-    const { data, pettype, breed } = this.state;
+    const { data, category, breed } = this.state;
     return (
       <Fragment>
         <Form onSubmit={this.handleSubmit}>
           <Row form>
             <Col md={6}>
               <FormGroup>
-                <Label for="PetType">Animal</Label>
+                <Label for="Category">Animal</Label>
                 <Input
                   type="select"
-                  name="pettype"
-                  id="SelectPetType"
+                  name="category"
+                  id="SelectCategoryPet"
                   onChange={this.handleChange}
-                  value={pettype}
+                  value={category}
                 >
                   <option disabled value="">
                     Choose One
                   </option>
                   {data &&
-                    Object.keys(data).map((pettype, i) => (
-                      <option value={pettype} key={i}>
-                        {pettype}
+                    Object.keys(data).map((category, i) => (
+                      <option value={category} key={i}>
+                        {category}
                       </option>
                     ))}
                 </Input>
@@ -66,8 +67,8 @@ export default class Search extends Component {
                   <option disabled value="">
                     City
                   </option>
-                  {pettype !== "" &&
-                    data[pettype].map((breed, i) => (
+                  {category !== "" &&
+                    data[category].map((breed, i) => (
                       <option value={breed} key={i}>
                         {breed}
                       </option>
@@ -82,3 +83,8 @@ export default class Search extends Component {
     );
   }
 }
+
+export default connect(
+  null,
+  { fetchPets }
+)(Search);
