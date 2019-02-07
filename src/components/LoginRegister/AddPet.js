@@ -246,7 +246,7 @@ class AddPet extends React.Component {
           {photo && (
             <img
               src={photo}
-              alt="pet image"
+              alt="pet"
               style={{ width: "50%", height: "100px" }}
             />
           )}

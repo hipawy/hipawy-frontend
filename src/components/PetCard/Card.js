@@ -74,7 +74,7 @@ class PetCard extends React.Component {
         >
           <ModalHeader toggle={this.toggle}>{pet.name}</ModalHeader>
           <ModalBody>
-            <img src={pet.photo} alt="pet image" /> <br />
+            <img src={pet.photo} alt="pet" /> <br />
             {pet.breed} <br />
             {pet.age} <br />
             {pet.desc}
