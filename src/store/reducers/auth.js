@@ -1,4 +1,9 @@
-import { SIGN_IN, SET_SIGN_UP_STATUS, SIGN_OUT } from "../types";
+import {
+  SIGN_IN,
+  SET_SIGN_UP_STATUS,
+  SIGN_OUT,
+  UPDATE_USER_PROFILE
+} from "../types";
 
 const initialState = {
   isAuthenticated: false,
@@ -14,6 +19,8 @@ export default (state = initialState, action) => {
       return { ...state, isAuthenticated: true, user: action.payload };
     case SIGN_OUT:
       return { ...state, isAuthenticated: false, user: null };
+    case UPDATE_USER_PROFILE:
+      return { ...state, user: action.payload };
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import { FETCH_USERS, FETCH_USER, UPDATE_USER_PROFILE } from "../types";
+import { FETCH_USERS, FETCH_USER } from "../types";
 
 const initialState = {
   user: null
@@ -9,9 +9,7 @@ export default (state = initialState, action) => {
     case FETCH_USERS:
       return action.payload;
     case FETCH_USER:
-      return action.payload;
-    case UPDATE_USER_PROFILE:
-      return action.payload;
+      return { user: action.payload };
     default:
       return state;
   }

@@ -32,13 +32,14 @@ export const fetchUser = userId => dispatch => {
 };
 
 export const updateUserProfile = data => dispatch => {
-  // const token = Cookies.get("token");
-  // console.log(token);
+  const token = Cookies.get("token");
 
-  Axios.patch(`${process.env.REACT_APP_API_URL}/users/${data.id}`)
+  Axios.patch(`${process.env.REACT_APP_API_URL}/users/${data.id}`, data, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
     .then(response => {
       dispatch({ type: UPDATE_USER_PROFILE, payload: response.data.user });
-      dispatch(fetchUser(data.id));
+      // dispatch(fetchUser(data.id));
     })
     .catch(err => {
       console.error(err);

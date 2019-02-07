@@ -18,7 +18,7 @@ class UserUpdate extends Component {
 
   componentDidMount() {
     const userId = parseInt(this.props.userId);
-    this.setState({ data: provinces, id: userId });
+    this.setState({ data: provinces, id: userId, ...this.props.user });
   }
 
   handleChange = e => {
@@ -27,13 +27,11 @@ class UserUpdate extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.props);
-    console.log(this.state);
     this.props.updateUserProfile(this.state);
+    this.props.finishUpdate();
   };
 
   render() {
-    const { user } = this.props;
     const {
       data,
       fullname,
@@ -57,7 +55,7 @@ class UserUpdate extends Component {
               id="name"
               value={fullname}
               onChange={this.handleChange}
-              //placeholder={user.fullname}
+           
             />
           </Col>
         </FormGroup>
@@ -72,7 +70,6 @@ class UserUpdate extends Component {
               id="updateEmail"
               value={email}
               onChange={this.handleChange}
-              //placeholder={user.email}
             />
           </Col>
         </FormGroup>
@@ -87,7 +84,6 @@ class UserUpdate extends Component {
               id="updateAddress"
               value={address}
               onChange={this.handleChange}
-              //placeholder={user.address}
             />
           </Col>
         </FormGroup>
@@ -150,7 +146,6 @@ class UserUpdate extends Component {
               id="phone"
               value={phone}
               onChange={this.handleChange}
-              // placeholder={user.phone}
             />
           </Col>
         </FormGroup>

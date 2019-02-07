@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component} from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import UserUpdate from "./UserUpdate";
@@ -20,7 +20,6 @@ class UserProfile extends Component {
 
   render() {
     const { user, isAuthenticated } = this.props;
-    console.log(this.state.update);
 
     if (user) {
       const {
@@ -38,27 +37,30 @@ class UserProfile extends Component {
         return <Redirect to="/" />;
       }
 
-      if (this.state.update === false) {
+      if (!this.state.update) {
         return (
-          <Fragment>
-            <Card>
-              <img src={user.photo} className="w-100" alt="user image" />
-              {Object.keys(profile)
-                .filter(field => field !== "photo")
-                .map((field, i) => (
-                  <CardBody key={i}>
-                    <CardText>
-                      {profile[field]}
-                      {true}
-                    </CardText>
-                  </CardBody>
-                ))}
-              <Button onClick={this.toUpdate}>Edit</Button>
-            </Card>
-          </Fragment>
+          <Card>
+            <img src={user.photo} className="w-100" alt="user" />
+            {Object.keys(profile)
+              .filter(field => field !== "photo")
+              .map((field, i) => (
+                <CardBody key={i}>
+                  <CardText>
+                    {profile[field]}
+                    {true}
+                  </CardText>
+                </CardBody>
+              ))}
+            <Button onClick={this.toUpdate}>Edit</Button>
+          </Card>
         );
       } else {
-        return <UserUpdate userId={this.props.userId} />;
+        return (
+          <UserUpdate
+            userId={this.props.userId}
+            finishUpdate={() => this.setState({ update: false })}
+          />
+        );
       }
     } else {
       return null;
