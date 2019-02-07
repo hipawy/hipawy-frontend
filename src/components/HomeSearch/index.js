@@ -26,6 +26,11 @@ class Search extends Component {
     this.setState({ data: petsearch });
   }
 
+  clearSearch = e => {
+    this.props.fetchPets()
+    this.setState({category:"", breed:""})
+  }
+
   render() {
     const { data, category, breed } = this.state;
     return (
@@ -65,7 +70,7 @@ class Search extends Component {
                   value={breed}
                 >
                   <option disabled value="">
-                    City
+                    Choose one
                   </option>
                   {category !== "" &&
                     data[category].map((breed, i) => (
@@ -78,6 +83,7 @@ class Search extends Component {
             </Col>
           </Row>
           <Button type="submit">Search</Button>
+          <Button onClick={this.clearSearch}>Clear</Button>
         </Form>
       </Fragment>
     );

@@ -44,14 +44,15 @@ class PetCardHome extends Component {
     return (
       <Container>
         <StyledRow xs="12">
-          {pets &&
-            pets.map((pet, i) => (
-              <StyledCol key={i} md="4">
-                <Card pet={pet} onClick={this.toggle}>
-                  {this.props.buttonLabel}{" "}
-                </Card>
-              </StyledCol>
-            ))}
+          {pets && pets.length > 0
+            ? pets.map((pet, i) => (
+                <StyledCol key={i} md="4">
+                  <Card pet={pet} onClick={this.toggle}>
+                    {this.props.buttonLabel}
+                  </Card>
+                </StyledCol>
+              ))
+            : "maap bang"}
         </StyledRow>
       </Container>
     );
