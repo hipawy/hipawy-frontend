@@ -103,9 +103,10 @@ export const updatePetProfileStatus = data => dispatch => {
     .then(response => {
       dispatch({
         type: UPDATE_PET_PROFILE_STATUS,
-        payload: response.data.pets
+        payload: response.data.pet
       });
       dispatch(fetchUserPets(data.userId));
+      console.log(response);
     })
     .catch(err => {
       console.error(err);

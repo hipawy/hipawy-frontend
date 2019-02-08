@@ -24,6 +24,7 @@ class AddPet extends React.Component {
     photo: "",
     age: "",
     desc: "",
+    status: "registered",
     termsCheck: false
   };
 
