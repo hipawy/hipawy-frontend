@@ -129,11 +129,6 @@ class Header extends Component {
                     Pet Care
                   </NavTags>
                 </NavItem>
-                <NavItem>
-                  <NavTags tag={Link} to="/Q&A/">
-                    Q&A
-                  </NavTags>
-                </NavItem>
               </Nav>
             </NavLeft>
 

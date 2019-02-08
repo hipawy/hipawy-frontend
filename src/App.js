@@ -13,6 +13,7 @@ import PetCare from "./views/PetCare";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer";
 import UserProfile from "./components/UserSetting";
+import PrivacyPolicy from "./views/PrivacyPolicy";
 
 class App extends Component {
   async componentDidMount() {
@@ -46,6 +47,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/About" exact component={About} />
             <Route path="/PetCare" exact component={PetCare} />
+            <Route path="/PrivacyPolicy" exact component={PrivacyPolicy} />
             <Route path="/UserProfile/:id" exact component={UserProfile} />
           </Switch>
           <Footer />
