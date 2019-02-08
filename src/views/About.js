@@ -14,7 +14,9 @@ class About extends Component {
         <div>
           <JumboStyle fluid>
             <Container fluid>
-              <h1>About HiPawy!</h1>
+              <h1>
+                <strong>About HiPawy!</strong>
+              </h1>
               <div className="lead">
                 HiPawy is an online, searchable database of animals who need
                 homes. It is also a directory of nearly animal adoption
@@ -22,7 +24,9 @@ class About extends Component {
                 their own home pages and available-pet databases.
               </div>
 
-              <h2>Our mission</h2>
+              <h2>
+                <strong>Our mission</strong>
+              </h2>
               <div>
                 To use Internet technology and the resources it can generate to:
                 <ol>
@@ -46,7 +50,9 @@ class About extends Component {
                 resource directory and a library of free pet-care articles to
                 help keep pets in their homes.
               </div>
-              <div>Petfinder is updated DAILY.</div>
+              <div>
+                <strong>Petfinder is updated DAILY.</strong>
+              </div>
               <div>
                 Organizations wishing to participate should register. A contact
                 person should be responsible for direct communications with
@@ -71,7 +77,9 @@ class About extends Component {
                 to show Petfinder pets from your community on your own home
                 page.
               </div>
-              <h3>Disclaimer</h3>
+              <h3>
+                <strong>Disclaimer</strong>
+              </h3>
               <div>
                 Petfinder is only a directory of homeless pets and pet adoption
                 organizations. No information in Petfinder is guaranteed.
