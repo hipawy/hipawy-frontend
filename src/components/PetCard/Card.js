@@ -33,6 +33,10 @@ const StyledModal = styled(Modal)`
   max-width: 1000px;
 `;
 
+const StyledModalHeader = styled(ModalHeader)`
+  background-color: #933594;
+`;
+
 const CardImage = styled.div`
   position: relative;
   height: 300px;
@@ -61,7 +65,7 @@ const ImageBoxPet = styled.div`
   height: 40vh;
   overflow: hidden;
   border-radius: 10%;
-  margin-top: 10px;
+  margin: 10px 0 20px; 0;
 `;
 
 const ImageBoxUser = styled.div`
@@ -78,11 +82,22 @@ const StyledCol = styled(Col)`
   align-items: center;
 `;
 
-const StyledDiv = styled.div`
+const StyledDivUser = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: solid #933594;
+  height: 100%;
+  border-radius: 10%;
+`;
+
+const StyledDivPet = styled.div`
+  align-text: left;
+`;
+const StyledDivUserText = styled.div`
+  margin-left: 10px;
+  align-text: left;
 `;
 
 class PetCard extends React.Component {
@@ -129,31 +144,53 @@ class PetCard extends React.Component {
           toggle={this.toggle}
           className={this.props.className}
         >
-          <ModalHeader toggle={this.toggle}>{pet.name}</ModalHeader>
+          <StyledModalHeader toggle={this.toggle} />
           <ModalBody>
             <Row>
               <StyledCol md="7">
                 <ImageBoxPet>
                   <StyledImagePet src={pet.photo} alt="pet" />
                 </ImageBoxPet>
-                <div>
-                  <h4>Breed: &nbsp; &nbsp; &nbsp; {pet.breed}</h4>
-                  <h4>Age: &nbsp; {pet.age}</h4>
-                  <h4>Description: &nbsp; {pet.desc}</h4>
-                </div>
+                <StyledDivPet>
+                  <h1>
+                    <strong>{pet.name}</strong>
+                  </h1>
+                  <h4>
+                    <strong>Breed</strong>: {pet.breed}
+                  </h4>
+                  <h4>
+                    <strong>Age</strong>: {pet.age}
+                  </h4>
+                  <h4>
+                    <strong>Description</strong>: {pet.desc}
+                  </h4>
+                </StyledDivPet>
               </StyledCol>
               <Col md="5">
                 {user ? (
-                  <StyledDiv>
+                  <StyledDivUser>
+                    <h3>
+                      <strong>Owner</strong>
+                    </h3>
                     <ImageBoxUser>
                       <StyledImageUser src={user.photo} alt="user" />
                     </ImageBoxUser>
-                    <h1>{user.fullname}</h1>
-                    <h5>{user.address}</h5>
-                    <h5>{user.province}</h5>
-                    <h5>{user.city}</h5>
-                    <h5>{user.phone}</h5>
-                  </StyledDiv>
+                    <StyledDivUserText>
+                      <h3>{user.fullname}</h3>
+                      <h5>
+                        <strong>Address</strong>: {user.address}
+                      </h5>
+                      <h5>
+                        <strong>Province</strong>: {user.province}
+                      </h5>
+                      <h5>
+                        <strong>City</strong>: {user.city}
+                      </h5>
+                      <h5>
+                        <strong>Phone</strong>: {user.phone}
+                      </h5>
+                    </StyledDivUserText>
+                  </StyledDivUser>
                 ) : (
                   <p>loading</p>
                 )}
