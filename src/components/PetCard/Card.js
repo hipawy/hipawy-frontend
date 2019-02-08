@@ -21,11 +21,11 @@ import { fetchPetUser } from "../../store/actions/pets";
 const StyledCard = styled(Card)`
   height: 100%;
   align-self: stretch;
+  border-radius: 10px;
 
   :hover {
     cursor: pointer;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
-      0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   }
 `;
 
@@ -41,6 +41,8 @@ const CardImage = styled.div`
   position: relative;
   height: 300px;
   overflow: hidden;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 
   img {
     position: absolute;

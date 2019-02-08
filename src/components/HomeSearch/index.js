@@ -7,16 +7,38 @@ import { fetchPets } from "../../store/actions/pets";
 import { connect } from "react-redux";
 
 const StyledRow = styled(Row)`
-  margin: 5vh 5vw;
+  margin: 5vh;
 `;
-const StyledCol = styled(Col)`
-  margin: 3vh 0;
-`;
-
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const FormCustom = styled(FormGroup)`
+  width: 0;
+  transition: 0.5s;
+  opacity: 0;
+  padding: 12px;
+  background-color: #933594;
+  color: white;
+  margin-top: 12px;
+
+  &.active {
+    width: 200px;
+    margin-left: 10px;
+    opacity: 1;
+    border-radius: 10px;
+  }
+`;
+
+const FormCustomStart = styled(FormGroup)`
+  width: 200px;
+  padding: 12px;
+  background-color: #933594;
+  border-radius: 10px;
+  color: white;
+  margin-top: 12px;
 `;
 
 class Search extends Component {
@@ -56,13 +78,16 @@ class Search extends Component {
 
   render() {
     const { data, category, breed, provinces, province, city } = this.state;
+    console.log(category);
+
     return (
       <Fragment>
         <StyledDiv>
           <Form onSubmit={this.handleSubmit}>
             <StyledRow form>
-              <Col md={2}>
-                <FormGroup>
+              <Col md={12} className="d-flex">
+                {" "}
+                <FormCustomStart>
                   <Label for="Category">Animal</Label>
                   <Input
                     type="select"
@@ -81,10 +106,8 @@ class Search extends Component {
                         </option>
                       ))}
                   </Input>
-                </FormGroup>
-              </Col>
-              <Col md={2}>
-                <FormGroup>
+                </FormCustomStart>
+                <FormCustom className={`${category ? "active" : ""}`}>
                   <Label for="Breed">Breed</Label>
                   <Input
                     type="select"
@@ -103,10 +126,8 @@ class Search extends Component {
                         </option>
                       ))}
                   </Input>
-                </FormGroup>
-              </Col>
-              <Col md={2}>
-                <FormGroup>
+                </FormCustom>
+                <FormCustom className={`${breed ? "active" : ""}`}>
                   <Label for="Province">Province</Label>
                   <Input
                     type="select"
@@ -125,10 +146,8 @@ class Search extends Component {
                         </option>
                       ))}
                   </Input>
-                </FormGroup>
-              </Col>
-              <Col md={2}>
-                <FormGroup>
+                </FormCustom>
+                <FormCustom className={`${province ? "active" : ""}`}>
                   <Label for="City">City</Label>
                   <Input
                     type="select"
@@ -147,14 +166,10 @@ class Search extends Component {
                         </option>
                       ))}
                   </Input>
-                </FormGroup>
-              </Col>
-              <StyledCol md={1.5}>
+                </FormCustom>
                 <Button type="submit">Search</Button>
-              </StyledCol>
-              <StyledCol md={1.5}>
                 <Button onClick={this.clearSearch}>Clear</Button>
-              </StyledCol>
+              </Col>
             </StyledRow>
           </Form>
         </StyledDiv>
