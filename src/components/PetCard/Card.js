@@ -10,6 +10,8 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Row,
+  Col,
   Button
 } from "reactstrap";
 import styled from "styled-components";
@@ -33,6 +35,42 @@ const StyledModal = styled(Modal)`
 
 const StyledCardImg = styled(CardImg)`
   height: 200px;
+`;
+
+const StyledImagePet = styled.img`
+  max-height: 100%;
+`;
+
+const StyledImageUser = styled.img`
+  max-height: 100%;
+`;
+
+const ImageBoxPet = styled.div`
+  height: 40vh;
+  overflow: hidden;
+  border-radius: 10%;
+  margin-top: 10px;
+`;
+
+const ImageBoxUser = styled.div`
+  height: auto;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-top: 10px;
+`;
+
+const StyledCol = styled(Col)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 class PetCard extends React.Component {
@@ -79,22 +117,34 @@ class PetCard extends React.Component {
         >
           <ModalHeader toggle={this.toggle}>{pet.name}</ModalHeader>
           <ModalBody>
-            <img src={pet.photo} alt="pet" /> <br />
-            {pet.breed} <br />
-            {pet.age} <br />
-            {pet.desc}
-            {user ? (
-              <div>
-                <img src={user.photo} alt="user" /> <br />
-                <h1>{user.fullname}</h1>
-                <h6>{user.address}</h6>
-                <h6>{user.province}</h6>
-                <h6>{user.city}</h6>
-                <h6>{user.phone}</h6>
-              </div>
-            ) : (
-              <p>loading</p>
-            )}
+            <Row>
+              <StyledCol md="7">
+                <ImageBoxPet>
+                  <StyledImagePet src={pet.photo} alt="pet" />
+                </ImageBoxPet>
+                <div>
+                  <h4>Breed: &nbsp; &nbsp; &nbsp; {pet.breed}</h4>
+                  <h4>Age: &nbsp; {pet.age}</h4>
+                  <h4>Description: &nbsp; {pet.desc}</h4>
+                </div>
+              </StyledCol>
+              <Col md="5">
+                {user ? (
+                  <StyledDiv>
+                    <ImageBoxUser>
+                      <StyledImageUser src={user.photo} alt="user" />
+                    </ImageBoxUser>
+                    <h1>{user.fullname}</h1>
+                    <h5>{user.address}</h5>
+                    <h5>{user.province}</h5>
+                    <h5>{user.city}</h5>
+                    <h5>{user.phone}</h5>
+                  </StyledDiv>
+                ) : (
+                  <p>loading</p>
+                )}
+              </Col>
+            </Row>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>
