@@ -9,9 +9,9 @@ import {
 import Axios from "axios";
 import Cookies from "js-cookie";
 
-export const fetchPets = (category = "", breed = "") => dispatch => {
+export const fetchPets = (category = "", breed = "", province="", city="") => dispatch => {
   Axios.get(
-    `${process.env.REACT_APP_API_URL}/pets?category=${category}&breed=${breed}`
+    `${process.env.REACT_APP_API_URL}/pets?category=${category}&breed=${breed}&province=${province}&city=${city}`
   )
     .then(response =>
       dispatch({ type: FETCH_PETS, payload: response.data.pets })

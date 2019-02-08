@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Card,
   CardImg,
@@ -18,6 +18,7 @@ import { fetchPetUser } from "../../store/actions/pets";
 
 const StyledCard = styled(Card)`
   height: 100%;
+  align-self: stretch;
 
   :hover {
     cursor: pointer;
@@ -28,6 +29,10 @@ const StyledCard = styled(Card)`
 
 const StyledModal = styled(Modal)`
   max-width: 1000px;
+`;
+
+const StyledCardImg = styled(CardImg)`
+  height: 200px;
 `;
 
 class PetCard extends React.Component {
@@ -54,16 +59,16 @@ class PetCard extends React.Component {
   render() {
     const { pet, user } = this.props;
     return (
-      <div>
+      <Fragment>
         <StyledCard onClick={() => this.toggleAndFetch(pet.id)}>
-          <CardImg src={pet.photo} alt="pet image" />
+          <StyledCardImg src={pet.photo} alt="pet image" />
           <CardBody>
             <CardTitle>{pet.name}</CardTitle>
             <CardSubtitle>
-              {pet.breed} spasi {pet.age}
+              {pet.breed} <br/> {pet.age}
             </CardSubtitle>
             <CardText>
-              {pet.city}, spasi {pet.province}
+              {pet.city}, <br/> {pet.province}
             </CardText>
           </CardBody>
         </StyledCard>
@@ -95,7 +100,7 @@ class PetCard extends React.Component {
             </Button>
           </ModalFooter>
         </StyledModal>
-      </div>
+      </Fragment>
     );
   }
 }
