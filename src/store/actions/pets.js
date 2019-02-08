@@ -4,14 +4,22 @@ import {
   FETCH_PETS,
   FETCH_USER_PETS,
   FETCH_USER_DATA,
-  UPDATE_PET_PROFILE
+  UPDATE_PET_PROFILE,
+  UPDATE_PET_PROFILE_STATUS
 } from "../types";
 import Axios from "axios";
 import Cookies from "js-cookie";
 
-export const fetchPets = (category = "", breed = "", province="", city="") => dispatch => {
+export const fetchPets = (
+  category = "",
+  breed = "",
+  province = "",
+  city = ""
+) => dispatch => {
   Axios.get(
-    `${process.env.REACT_APP_API_URL}/pets?category=${category}&breed=${breed}&province=${province}&city=${city}`
+    `${
+      process.env.REACT_APP_API_URL
+    }/pets?category=${category}&breed=${breed}&province=${province}&city=${city}`
   )
     .then(response =>
       dispatch({ type: FETCH_PETS, payload: response.data.pets })
@@ -79,6 +87,24 @@ export const updatePetProfile = data => dispatch => {
   })
     .then(response => {
       dispatch({ type: UPDATE_PET_PROFILE, payload: response.data.pets });
+      dispatch(fetchUserPets(data.userId));
+    })
+    .catch(err => {
+      console.error(err);
+    });
+};
+
+export const updatePetProfileStatus = data => dispatch => {
+  const token = Cookies.get("token");
+
+  Axios.patch(`${process.env.REACT_APP_API_URL}/pets/${data.id}`, data, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+    .then(response => {
+      dispatch({
+        type: UPDATE_PET_PROFILE_STATUS,
+        payload: response.data.pets
+      });
       dispatch(fetchUserPets(data.userId));
     })
     .catch(err => {

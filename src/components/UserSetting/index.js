@@ -21,7 +21,6 @@ class UserSetting extends Component {
     const userId = this.props.match.params.id;
     return (
       <ContainerHasStyled>
-        <Row />
         <Row>
           <Col xs="12" md="3">
             <UserProfile userId={userId} />
@@ -29,7 +28,7 @@ class UserSetting extends Component {
           <Col xs="12" md="9">
             <Row>
               {this.props.userPets.map((pet, i) => (
-                <Col xs="12" md="4" key={i}>
+                <Col xs="12" md="6" key={i}>
                   <PetCard pet={pet} />
                 </Col>
               ))}
