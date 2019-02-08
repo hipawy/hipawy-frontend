@@ -10,6 +10,10 @@ const ContainerHasStyled = styled(Container)`
   padding: 40px 0;
 `;
 
+const StyledCol = styled(Col)`
+  align-self: stretch;
+`;
+
 class UserSetting extends Component {
   componentDidMount() {
     if (this.props.user) {
@@ -30,9 +34,9 @@ class UserSetting extends Component {
               {this.props.userPets
                 .filter(pet => pet.status === "registered")
                 .map((pet, i) => (
-                  <Col xs="12" md="6" key={i}>
+                  <StyledCol xs="12" md="6" key={i}>
                     <PetCard pet={pet} />
-                  </Col>
+                  </StyledCol>
                 ))}
             </Row>
             <hr />
@@ -40,9 +44,9 @@ class UserSetting extends Component {
               {this.props.userPets
                 .filter(pet => pet.status === "adopted")
                 .map((pet, i) => (
-                  <Col xs="12" md="6" key={i}>
+                  <StyledCol xs="12" md="6" key={i}>
                     <PetCard pet={pet} />
-                  </Col>
+                  </StyledCol>
                 ))}
             </Row>
           </Col>

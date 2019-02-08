@@ -65,10 +65,10 @@ class PetCard extends React.Component {
           <CardBody>
             <CardTitle>{pet.name}</CardTitle>
             <CardSubtitle>
-              {pet.breed} <br/> {pet.age}
+              {pet.breed} <br /> {pet.age}
             </CardSubtitle>
             <CardText>
-              {pet.city}, <br/> {pet.province}
+              {pet.city}, <br /> {pet.province}
             </CardText>
           </CardBody>
         </StyledCard>
@@ -85,7 +85,12 @@ class PetCard extends React.Component {
             {pet.desc}
             {user ? (
               <div>
+                <img src={user.photo} alt="user" /> <br />
                 <h1>{user.fullname}</h1>
+                <h6>{user.address}</h6>
+                <h6>{user.province}</h6>
+                <h6>{user.city}</h6>
+                <h6>{user.phone}</h6>
               </div>
             ) : (
               <p>loading</p>

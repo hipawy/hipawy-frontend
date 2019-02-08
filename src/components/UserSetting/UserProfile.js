@@ -1,8 +1,21 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import UserUpdate from "./UserUpdate";
+import styled from "styled-components";
 import { Card, CardBody, Button, CardText } from "reactstrap";
+
+const StyledCard = styled(Card)`
+  max-height: 100vh;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+`;
+
+const StyledImage = styled.img`
+  height: auto;
+  min-height: 50%;
+  width: auto;
+  padding: 10px;
+`;
 
 class UserProfile extends Component {
   constructor(props) {
@@ -39,8 +52,8 @@ class UserProfile extends Component {
 
       if (!this.state.update) {
         return (
-          <Card>
-            <img src={user.photo} className="w-100" alt="user" />
+          <StyledCard>
+            <StyledImage src={user.photo} className="w-100" alt="user" />
             {Object.keys(profile)
               .filter(field => field !== "photo")
               .map((field, i) => (
@@ -52,7 +65,7 @@ class UserProfile extends Component {
                 </CardBody>
               ))}
             <Button onClick={this.toUpdate}>Edit</Button>
-          </Card>
+          </StyledCard>
         );
       } else {
         return (

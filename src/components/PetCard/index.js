@@ -19,16 +19,19 @@ import UpdatePet from "./UpdatePet";
 import styled from "styled-components";
 
 const Card = styled.div`
-  border: 1px solid black;
-  max-height: 30vh
-  margin-bottom: 30px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: 100%;
 `;
 
 const CardImage = styled(Col)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: #933594;
+  border-radius: 5px 0 0 5px;
+  height: 100%;
 `;
 
 const StyledImage = styled.img`
@@ -43,7 +46,8 @@ const ImageBox = styled.div`
   width: 15vh;
   height: 15vh;
   overflow: hidden;
-  border-radius: 50px;
+  border-radius: 100%;
+  margin-top: 10px;
 `;
 
 const PetName = styled.h4`
@@ -53,6 +57,9 @@ const PetName = styled.h4`
 
 const CardText = styled(Col)`
   position: relative;
+`;
+
+const CardTextContent = styled.div`
   padding: 10px;
 `;
 
@@ -70,8 +77,7 @@ const StyledRow = styled(Row)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-right: 10px;
-  max-height: 30vh;
+  height: 100%;
 `;
 
 class PetCard extends Component {
@@ -153,6 +159,22 @@ class PetCard extends Component {
               </CardImage>
 
               <CardText md="6">
+                <CardTextContent>
+                  <h6>
+                    <strong>Category</strong>: {pet.category}
+                  </h6>
+                  <h6>
+                    <strong>Breed</strong>: {pet.breed}
+                  </h6>
+                  <h6>
+                    <strong>Age</strong>: {pet.age}
+                  </h6>
+                  <h6>
+                    <strong>desc</strong>: {pet.desc}
+                  </h6>
+                </CardTextContent>
+              </CardText>
+              <Col md="1">
                 <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                   <MenuButton>
                     <i className="fa fa-ellipsis-v" />
@@ -169,14 +191,7 @@ class PetCard extends Component {
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
-
-                <div>
-                  <h6>{pet.category}</h6>
-                  <h6>{pet.breed}</h6>
-                  <h6>{pet.age}</h6>
-                  <h6>{pet.desc}</h6>
-                </div>
-              </CardText>
+              </Col>
             </StyledRow>
           </Card>
         );
