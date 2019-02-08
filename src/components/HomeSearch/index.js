@@ -12,7 +12,7 @@ const StyledRow = styled(Row)`
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const FormCustom = styled(FormGroup)`
@@ -39,6 +39,13 @@ const FormCustomStart = styled(FormGroup)`
   border-radius: 10px;
   color: white;
   margin-top: 12px;
+`;
+
+const StyledButton = styled(Button)`
+  border-radius: 30px !important;
+  margin: 35px 10px;
+  height: 40px;
+  padding: 10px 30px;
 `;
 
 class Search extends Component {
@@ -167,8 +174,8 @@ class Search extends Component {
                       ))}
                   </Input>
                 </FormCustom>
-                <Button type="submit">Search</Button>
-                <Button onClick={this.clearSearch}>Clear</Button>
+                <StyledButton type="submit">Search</StyledButton>
+                <StyledButton onClick={this.clearSearch}>Clear</StyledButton>
               </Col>
             </StyledRow>
           </Form>
