@@ -33,8 +33,20 @@ const StyledModal = styled(Modal)`
   max-width: 1000px;
 `;
 
-const StyledCardImg = styled(CardImg)`
-  height: 200px;
+const CardImage = styled.div`
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    height: auto;
+    min-height: 100%;
+  }
 `;
 
 const StyledImagePet = styled.img`
@@ -99,7 +111,9 @@ class PetCard extends React.Component {
     return (
       <Fragment>
         <StyledCard onClick={() => this.toggleAndFetch(pet.id)}>
-          <StyledCardImg src={pet.photo} alt="pet image" />
+          <CardImage>
+            <img src={pet.photo} alt="pet image" />
+          </CardImage>
           <CardBody>
             <CardTitle>{pet.name}</CardTitle>
             <CardSubtitle>
