@@ -64,9 +64,9 @@ export const createPet = data => dispatch => {
       headers: { Authorization: `Bearer ${token}` }
     }
   )
-    .then(() => {
-      dispatch({ type: CREATE_PET });
-      dispatch(fetchUserPets(data.userId));
+    .then(response => {
+      dispatch({ type: CREATE_PET, payload: response.data.pet });
+      // dispatch(fetchUserPets(data.userId));
     })
     .catch(err => console.error(err));
 };

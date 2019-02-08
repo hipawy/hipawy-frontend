@@ -47,9 +47,7 @@ class AddPet extends React.Component {
       ...this.state,
       userId: this.props.user.id
     });
-    this.props.fetchUserPets(this.props.user.id);
-    // this.props.fetchUserPets();
-    this.props.history.push("/UserProfile");
+    // this.props.fetchUserPets(this.props.user.id);
     this.props.closeModal();
   };
 

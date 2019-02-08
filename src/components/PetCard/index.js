@@ -9,7 +9,6 @@ class PetCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isComplete: false,
       edit: false
     };
   }
@@ -21,8 +20,6 @@ class PetCard extends Component {
         petId: this.props.pet.id
       });
       this.props.fetchUserPets(this.props.user.id);
-
-      this.setState({ isComplete: true });
     }
   };
 
@@ -36,9 +33,7 @@ class PetCard extends Component {
     const { pet, isAuthenticated } = this.props;
     console.log(pet);
 
-    if (this.state.isComplete) {
-      return <Redirect to="/UserProfile" />;
-    }
+
 
     if (pet) {
       const { createdAt, updatedAt, ...profile } = pet;
@@ -61,7 +56,7 @@ class PetCard extends Component {
             </div>
             <div>
               <Button onClick={this.toEdit}>Edit</Button>
-              <Button onClick={this.handleClick}>Delete</Button>
+              <Button onClick={this.handleClickDelete}>Delete</Button>
             </div>
           </Fragment>
         );

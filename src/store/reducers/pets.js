@@ -2,6 +2,7 @@ import {
   FETCH_PETS,
   FETCH_USER_PETS,
   FETCH_USER_DATA,
+  CREATE_PET,
   UPDATE_PET_PROFILE
 } from "../types";
 
@@ -13,6 +14,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case CREATE_PET:
+      return { ...state, userPets: [...state.userPets, action.payload] };
     case FETCH_PETS:
       return { ...state, pets: action.payload };
     case FETCH_USER_DATA:
