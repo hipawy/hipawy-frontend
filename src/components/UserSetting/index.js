@@ -21,18 +21,29 @@ class UserSetting extends Component {
     const userId = this.props.match.params.id;
     return (
       <ContainerHasStyled>
-        <Row />
         <Row>
           <Col xs="12" md="3">
             <UserProfile userId={userId} />
           </Col>
           <Col xs="12" md="9">
             <Row>
-              {this.props.userPets.map((pet, i) => (
-                <Col xs="12" md="4" key={i}>
-                  <PetCard pet={pet} />
-                </Col>
-              ))}
+              {this.props.userPets
+                .filter(pet => pet.status === "registered")
+                .map((pet, i) => (
+                  <Col xs="12" md="6" key={i}>
+                    <PetCard pet={pet} />
+                  </Col>
+                ))}
+            </Row>
+            <hr />
+            <Row>
+              {this.props.userPets
+                .filter(pet => pet.status === "adopted")
+                .map((pet, i) => (
+                  <Col xs="12" md="6" key={i}>
+                    <PetCard pet={pet} />
+                  </Col>
+                ))}
             </Row>
           </Col>
         </Row>

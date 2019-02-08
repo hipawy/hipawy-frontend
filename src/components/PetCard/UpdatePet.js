@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Col, Button, Form, FormGroup, Label, Input, Row } from "reactstrap";
-import { updatePetProfile, fetchUserPets } from "../../store/actions/pets";
+import {
+  updatePetProfile
+  // fetchUserPets
+} from "../../store/actions/pets";
 import { connect } from "react-redux";
 import provinces from "../../components/Adress/data";
 import petCategories from "../HomeSearch/Pettype";
@@ -24,7 +27,6 @@ class UpdatePet extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.pet);
     const petId = parseInt(this.props.pet.id);
 
     this.setState({ provinces, petCategories, id: petId, ...this.props.pet });
@@ -257,5 +259,8 @@ const mapStateToProps = store => ({
 
 export default connect(
   mapStateToProps,
-  { updatePetProfile, fetchUserPets }
+  {
+    updatePetProfile
+    // fetchUserPets
+  }
 )(UpdatePet);

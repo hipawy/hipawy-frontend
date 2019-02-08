@@ -12,6 +12,10 @@ import { signOut } from "../../store/actions/auth";
 import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
+const StyledDropdownMenu = styled(DropdownMenu)`
+  transform: translateX(-50%);
+`;
+
 const Button = styled(DropdownToggle)`
   padding: 8px;
   border-radius: 0;
@@ -70,13 +74,13 @@ class UserDropDown extends React.Component {
           <span style={{ marginLeft: "0px" }} />
           {user && user.fullname.split(" ")[0]}
         </Button>
-        <DropdownMenu>
+        <StyledDropdownMenu>
           <DropdownItem tag={Link} to={`/UserProfile/${user.id}`}>
             Profile
           </DropdownItem>
           <DropdownItem divider />
           <DropdownItem onClick={this.handleSignOut}>Sign Out</DropdownItem>
-        </DropdownMenu>
+        </StyledDropdownMenu>
       </DropDown>
     );
   }
