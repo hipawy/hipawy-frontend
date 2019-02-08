@@ -44,15 +44,19 @@ class PetCardHome extends Component {
     return (
       <Container>
         <StyledRow xs="12">
-          {pets && pets.length > 0
-            ? pets.map((pet, i) => (
+          {pets && pets.length > 0 ? (
+            pets
+              .filter(pet => pet.status === "registered")
+              .map((pet, i) => (
                 <StyledCol key={i} md="4">
                   <Card pet={pet} onClick={this.toggle}>
                     {this.props.buttonLabel}
                   </Card>
                 </StyledCol>
               ))
-            : "maap bang"}
+          ) : (
+            <h1>Pet Not Found :( </h1>
+          )}
         </StyledRow>
       </Container>
     );
