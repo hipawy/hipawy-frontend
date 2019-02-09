@@ -77,7 +77,11 @@ class AddPet extends React.Component {
     if (this.state.termsCheck === true) {
       SubmitButton = <Button type="submit">Submit</Button>;
     } else {
-      SubmitButton = <span>I Have Agreed to the Terms and Conditions</span>;
+      SubmitButton = (
+        <span>
+          I Have Agreed to the <a href="/PrivacyPolicy">Privacy Policy</a>
+        </span>
+      );
     }
 
     return (
