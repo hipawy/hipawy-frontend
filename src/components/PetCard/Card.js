@@ -60,6 +60,7 @@ const StyledImagePet = styled.img`
 
 const StyledImageUser = styled.img`
   max-height: 100%;
+  max-width: 100%;
 `;
 
 const ImageBoxPet = styled.div`
@@ -81,6 +82,7 @@ const StyledCol = styled(Col)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-right: solid 2px rgba(0, 0, 0, 0.2);
 `;
 
 const StyledDivUser = styled.div`
@@ -88,7 +90,6 @@ const StyledDivUser = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid #933594;
   height: 100%;
   border-radius: 10%;
 `;
@@ -99,6 +100,11 @@ const StyledDivPet = styled.div`
 const StyledDivUserText = styled.div`
   margin-left: 10px;
   text-align: left;
+`;
+
+const Separator = styled.div`
+  height: 100%;
+  border: solid 2px rgba(0, 0, 0, 1);
 `;
 
 class PetCard extends React.Component {

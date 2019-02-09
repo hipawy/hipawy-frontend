@@ -29,6 +29,10 @@ const Body = styled.div`
   text-align: center;
 `;
 
+const HeaderText = styled.h1`
+color: white;
+`
+
 class Home extends Component {
   state = {};
   render() {
@@ -37,7 +41,7 @@ class Home extends Component {
         <Body>
           <JumboStyle fluid>
             <Container fluid>
-              <h1>Meet your Pawy, Meet your Bestfriend!!</h1>
+              <HeaderText><strong>Meet your Pawy, Meet your Bestfriend!!</strong></HeaderText>
 
               <Button outline color="purple" tag={Link} to="./About">
                 Learn More
