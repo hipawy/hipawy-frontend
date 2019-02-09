@@ -30,8 +30,12 @@ const Body = styled.div`
 `;
 
 const HeaderText = styled.h1`
-color: white;
-`
+  color: white;
+`;
+
+const StyledButton = styled(Button)`
+  color: white;
+`;
 
 class Home extends Component {
   state = {};
@@ -41,11 +45,13 @@ class Home extends Component {
         <Body>
           <JumboStyle fluid>
             <Container fluid>
-              <HeaderText><strong>Meet your Pawy, Meet your Bestfriend!!</strong></HeaderText>
+              <HeaderText>
+                <strong>Meet your Pawy, Meet your Bestfriend!!</strong>
+              </HeaderText>
 
-              <Button outline color="purple" tag={Link} to="./About">
+              <StyledButton outline color="white" tag={Link} to="./About">
                 Learn More
-              </Button>
+              </StyledButton>
             </Container>
           </JumboStyle>
         </Body>
