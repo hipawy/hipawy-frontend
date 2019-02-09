@@ -180,14 +180,14 @@ class PetCard extends Component {
                     <i className="fa fa-ellipsis-v" />
                   </MenuButton>
                   <DropdownMenu>
-                    <DropdownItem>
-                      <Button onClick={this.toEdit}>Edit</Button>
+                    <DropdownItem block onClick={this.toEdit}>
+                      Edit
                     </DropdownItem>
-                    <DropdownItem>
-                      <Button onClick={this.handleClickDelete}>Delete</Button>
+                    <DropdownItem block onClick={this.handleClickDelete}>
+                      Delete
                     </DropdownItem>
-                    <DropdownItem>
-                      <Button onClick={this.handleAdopt}>Adopted</Button>
+                    <DropdownItem block onClick={this.handleAdopt}>
+                      Adopted
                     </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>

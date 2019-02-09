@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 const StyledRow = styled(Row)`
   margin: 5vh;
 `;
+
 const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,22 +24,30 @@ const FormCustom = styled(FormGroup)`
   background-color: #933594;
   color: white;
   margin-top: 12px;
+  flex: 0;
 
   &.active {
     width: 200px;
     margin-left: 10px;
     opacity: 1;
     border-radius: 10px;
+    flex: 1;
   }
 `;
 
 const FormCustomStart = styled(FormGroup)`
   width: 200px;
+  margin-left: 10px;
   padding: 12px;
   background-color: #933594;
   border-radius: 10px;
   color: white;
   margin-top: 12px;
+  flex: 1;
+`;
+
+const StyledForm = styled(Form)`
+  width: 100%;
 `;
 
 const StyledButton = styled(Button)`
@@ -46,6 +55,11 @@ const StyledButton = styled(Button)`
   margin: 35px 10px;
   height: 40px;
   padding: 10px 30px;
+`;
+
+const StyledCol = styled(Col)`
+  display: flex;
+  align-items: center;
 `;
 
 class Search extends Component {
@@ -90,9 +104,9 @@ class Search extends Component {
     return (
       <Fragment>
         <StyledDiv>
-          <Form onSubmit={this.handleSubmit}>
+          <StyledForm onSubmit={this.handleSubmit}>
             <StyledRow form>
-              <Col md={12} className="d-flex">
+              <Col md={10} className="d-flex">
                 {" "}
                 <FormCustomStart>
                   <Label for="Category">Animal</Label>
@@ -134,7 +148,7 @@ class Search extends Component {
                       ))}
                   </Input>
                 </FormCustom>
-                <FormCustom className={`${breed ? "active" : ""}`}>
+                <FormCustomStart>
                   <Label for="Province">Province</Label>
                   <Input
                     type="select"
@@ -153,7 +167,7 @@ class Search extends Component {
                         </option>
                       ))}
                   </Input>
-                </FormCustom>
+                </FormCustomStart>
                 <FormCustom className={`${province ? "active" : ""}`}>
                   <Label for="City">City</Label>
                   <Input
@@ -174,11 +188,13 @@ class Search extends Component {
                       ))}
                   </Input>
                 </FormCustom>
+              </Col>
+              <StyledCol md="2">
                 <StyledButton type="submit">Search</StyledButton>
                 <StyledButton onClick={this.clearSearch}>Clear</StyledButton>
-              </Col>
+              </StyledCol>
             </StyledRow>
-          </Form>
+          </StyledForm>
         </StyledDiv>
       </Fragment>
     );

@@ -67,7 +67,7 @@ const ImageBoxPet = styled.div`
   height: 40vh;
   overflow: hidden;
   border-radius: 10%;
-  margin: 10px 0 20px; 0;
+  margin: 10px 0 20px;
 `;
 
 const ImageBoxUser = styled.div`
@@ -95,11 +95,11 @@ const StyledDivUser = styled.div`
 `;
 
 const StyledDivPet = styled.div`
-  align-text: left;
+  text-align: left;
 `;
 const StyledDivUserText = styled.div`
   margin-left: 10px;
-  align-text: left;
+  text-align: left;
 `;
 
 class PetCard extends React.Component {
