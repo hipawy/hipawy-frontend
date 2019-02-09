@@ -12,6 +12,7 @@ const ContainerHasStyled = styled(Container)`
 
 const StyledCol = styled(Col)`
   align-self: stretch;
+  margin: 10px 0;
 `;
 
 class UserSetting extends Component {
