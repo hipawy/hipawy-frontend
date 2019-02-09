@@ -17,7 +17,7 @@ class Register extends React.Component {
     phone: 0,
     email: "",
     password: "",
-    photo:"",
+    photo: "",
     termsCheck: false
   };
 
@@ -27,7 +27,7 @@ class Register extends React.Component {
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-  }; 
+  };
 
   termsCheckBox = name => event => {
     this.setState({ [name]: event.target.checked });
@@ -62,7 +62,11 @@ class Register extends React.Component {
     if (this.state.termsCheck === true) {
       SubmitButton = <Button type="submit">Submit</Button>;
     } else {
-      SubmitButton = <span>I Have Agreed to the Terms and Conditions</span>;
+      SubmitButton = (
+        <span>
+          I Have Agreed to the <a href="/PrivacyPolicy/">Privacy Policy</a>
+        </span>
+      );
     }
 
     return (
