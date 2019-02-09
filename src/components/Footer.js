@@ -72,11 +72,6 @@ class Footer extends Component {
                       Privacy Policy
                     </a>
                   </li>
-                  <li className="list-unstyled">
-                    <a style={styles.anchor} href="/Term/">
-                      Term
-                    </a>
-                  </li>
                 </ul>
               </Col>
             </Row>
